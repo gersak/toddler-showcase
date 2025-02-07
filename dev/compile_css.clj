@@ -17,10 +17,10 @@
              (cb/generate '{:ui {:include [toddler.ui*
                                            toddler.md
                                            toddler.notifications
-                                           toddler]}
-                            :dev {:include [toddler.dev
-                                            toddler.showcase
-                                            toddler.showcase*]}})
+                                           toddler
+                                           toddler.dev
+                                           toddler.showcase
+                                           toddler.showcase*]}})
              (cb/write-outputs-to (io/file dir "css")))]
      (prn :CSS-GENERATED)
      (doseq [mod (:outputs result)
@@ -33,8 +33,7 @@
    (cb/init)
    (update :aliases merge css/aliases)
    (cb/start)
-   (cb/index-path (io/file "src") {})
-   (cb/index-path (io/file "showcase/src") {})))
+   (cb/index-path (io/file "src") {})))
 
 (defn start
   {:shadow/requires-server true}
@@ -50,8 +49,7 @@
   (reset! css-watch-ref
           (fs-watch/start
            {}
-           [(io/file "src")
-            (io/file "showcase/src")]
+           [(io/file "src")]
            ["cljs" "cljc" "clj" "css"]
            (fn [updates]
              (try
