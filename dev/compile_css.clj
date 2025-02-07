@@ -81,7 +81,7 @@
   (reset! css-ref (init))
 
   ;; then build it once
-  (generate-css "docs"))
+  (generate-css "web"))
 
 (comment
   (-> css-ref deref keys)

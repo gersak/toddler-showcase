@@ -4,7 +4,8 @@
   "description": "UI elements based on helix library",
   "main": "index.js",
   "scripts": {
-    "dev": "npx shadow-cljs -A:shadow watch dev"
+    "dev": "npx shadow-cljs -A:shadow watch dev",
+    "release": "clj -X:shadow:css && npx shadow-cljs -A:shadow release github"
   },
   "author": "Robert Gersak",
   "license": "ISC",
