@@ -5,7 +5,7 @@
    [shadow.css :refer [css]]
    [toddler.core :as toddler]
    [toddler.layout :as layout]
-   [toddler.ui :as ui :refer [!]]
+   [toddler.ui :as ui]
    [toddler.md.lazy :as md]
    [toddler.router :as router]
    [toddler.fav6.solid :as solid]
@@ -22,7 +22,7 @@
 
 (defnc display-icons
   [{:keys [height icons]}]
-  (! :simplebar
+  ($ ui/simplebar
      {:style {:height (- height 80)}
       :className (css :pt-4)
       :shadow true}
@@ -34,7 +34,7 @@
                    ["& .name" :font-semibold {:font-size "10px"}])}
       (map
        (fn [[name icon]]
-         (! :tooltip
+         ($ ui/tooltip
             {:key name
              :message (d/div {:className "name"} name)}
             (d/div
@@ -90,32 +90,32 @@
               ($ md/watch-url {:url "/icons.md"})))
           (d/div
            {:className "footer"})))
-     (! :tabs
-        (! :tab
+     ($ ui/tabs
+        ($ ui/tab
            {:id ::material-outlined
             :name "Material Outlined"}
            ($ display-icons {:height height :icons material/outlined}))
-        (! :tab
+        ($ ui/tab
            {:id ::material-round
             :name "Material Round"}
            ($ display-icons {:height height :icons material/round}))
-        (! :tab
+        ($ ui/tab
            {:id ::material-sharp
             :name "Material Sharp"}
            ($ display-icons {:height height :icons material/sharp}))
-        (! :tab
+        ($ ui/tab
            {:id ::fav6-regular
             :name "FA Regular"}
            ($ display-icons {:height height :icons fav6/regular}))
-        (! :tab
+        ($ ui/tab
            {:id ::fav6-solid
             :name "FA Solid"}
            ($ display-icons {:height height :icons fav6/solid}))
-        (! :tab
+        ($ ui/tab
            {:id ::fav6-brands
             :name "FA Brands"}
            ($ display-icons {:height height :icons fav6/brands}))
-        (! :tab
+        ($ ui/tab
            {:id ::ionic
             :name "Ionic"}
            ($ display-icons {:height height :icons ionic/icons}))))))
