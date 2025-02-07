@@ -16,6 +16,7 @@
           :github
           {:target :browser
            :entries [toddler.showcase]
+           :asset-path "/toddler-showcase/js"
            :module-loader true
            :modules {:main
                      {:entries [toddler.showcase]
