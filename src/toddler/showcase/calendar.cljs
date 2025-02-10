@@ -46,7 +46,7 @@
        (! :row {:align :center}
           (! :column
              {:align :center
-              :style {:max-width "30rem"}
+              :style {:max-width (min 480 (- width 40))}
               :className (css
                           ["& .component" :my-6])}
              ($ md/watch-url {:url "/calendar.md"})

@@ -230,16 +230,17 @@
 
 (defnc user-list
   []
-  ($ ui/row
-     {:align :center
-      :className (css :mt-8)}
-     ($ ui/simplebar
-        {:style {:width 600
-                 :height 600}}
-        (map
-         (fn [{:keys [id] :as data}]
-           ($ user-item {:key id & data}))
-         user-data))))
+  (let [{:keys [width]} (layout/use-container-dimensions)]
+    ($ ui/row
+       {:align :center
+        :className (css :mt-8)}
+       ($ ui/simplebar
+          {:style {:width (min 600 (- width 40))
+                   :height 600}}
+          (map
+           (fn [{:keys [id] :as data}]
+             ($ user-item {:key id & data}))
+           user-data)))))
 
 (defnc user-list-tab
   []
@@ -353,7 +354,7 @@
                 :width width}}
        ($ ui/row {:align :center}
           ($ ui/column
-             {:style {:width "40rem"}
+             {:style {:max-width (min 640 (- width 40))}
               :className (css
                           ["& .component" :my-6])}
              ($ md/watch-url {:url "/layout.md"})

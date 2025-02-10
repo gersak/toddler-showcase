@@ -109,8 +109,7 @@
        (! :row {:align :center}
           (! :column
              {:align :center
-              :style {:max-width "30rem"
-                      :min-height 1500}}
+              :style {:max-width (min 500 (- width 40))}}
              ($ md/watch-url {:url "/notifications.md"})
              ($ toddler/portal
                 {:locator #(.getElementById js/document "notifications-example")}

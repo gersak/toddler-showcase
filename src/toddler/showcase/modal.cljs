@@ -166,13 +166,13 @@
         complex-dialog-opened? (router/use-rendered? :toddler.modal.complex-dialog)
         [context set-context!] (hooks/use-state nil)
         close! (use-close)]
+    (println "WIDTH: " width)
     (! :simplebar {:style {:height height
                            :width width}
                    :shadow true}
        (! :row {:align :center}
           (! :column {:align :center
-                      :style {:max-width "30rem"
-                              :min-height 1500}}
+                      :style {:max-width (min width 640)}}
              ($ md/watch-url {:url "/modal.md"})
              ($ dialog-example
                 {:opened? dialog-opened?

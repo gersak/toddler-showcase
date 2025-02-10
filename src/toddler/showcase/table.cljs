@@ -168,7 +168,7 @@
        {:align :center}
        (provider
         {:context layout/*container-dimensions*
-         :value {:width 600
+         :value {:width (min 600 (- width 40))
                  :height 500}}
         (! :table
            {:rows data
@@ -255,11 +255,12 @@
           (ui/extend-ui
            #:table {:row custom-row})]}
   []
-  (let [[state set-state!] (hooks/use-state expand-data)]
+  (let [[state set-state!] (hooks/use-state expand-data)
+        {:keys [width]} (layout/use-container-dimensions)]
     (! :row {:align :center}
        ($ layout/Container
           {:style
-           {:width 500
+           {:width (min 500 (- width 60))
             :height 400}}
           (! :table
              {:columns row-example-columns
@@ -295,10 +296,9 @@
        (! :row {:align :center}
           (! :column
              {:align :center
+              :style {:max-width (min width 640)}
               :className (css
-                          :items-center
                           ["& .example-field" :my-5]
-                          ["& .toddler-markdown" {:max-width "40rem"}]
                           ["& #toddler-table-example" :my-10])}
              ($ md/watch-url {:url "/tables.md"})
              ($ toddler/portal

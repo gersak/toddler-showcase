@@ -6,7 +6,7 @@ I've been coding UI for many years. Over time, it has been an emotional experien
 as seeing what you imagined come to life exactly the way you wanted.
 
 But why is this **so hard** most of the time? Styling, routing, positioning, responsiveness—
-there are just so many details to handle to achieve that **perfect UI**.
+there are just so many details to handle to achieve **that UI**.
 
 You look for help, turn to existing frameworks, and feel like you're making progress.
 Then, after days, weeks, or months, everything **breaks**. Your decisions backfire,
@@ -24,7 +24,7 @@ That's why I built **Toddler**. A lightweight, flexible UI system that helps me 
 this frustration. If you’ve ever felt the same, maybe it can help you too.
 
 
-## A Smarter Approach to Components
+## Providing Components
 
 During one of these UI struggles, a **brilliantly stupid** idea was born:
 What if components were just **placeholders** in the code, and I could swap them out
@@ -73,9 +73,17 @@ We define a generic `dropdown` component that looks for its implementation in th
 ;; Declare a general dropdown component
 (defcomponent dropdown :my/dropdown)
 
-(defnc dropdown-impl-1 [] (d/div "This is the first implementation"))
+(defnc dropdown-impl-1
+  []
+  (d/div
+   {:className (css :p-4 :rounded-lg :text-rose-100 :bg-rose-800)}
+   "This is first implementation"))
 
-(defnc dropdown-impl-2 [] (d/div "This is the second implementation"))
+(defnc dropdown-impl-2
+  []
+  (d/div
+   {:className (css :p-4 :rounded-lg :text-sky-100 :bg-sky-800)}
+   "This is second implementation"))
 
 ;; Swap dropdown implementations dynamically
 (defnc MyApp []
@@ -117,17 +125,3 @@ All reusable components are declared in a single namespace, then used via
    ;; Override or extend the current UI context dynamically
    )
 ```
-
-
-## Toddler Is Not a Component Library
-
-Yes, Toddler includes ready-to-use components, but that’s **not** its primary purpose.  
-You are encouraged to create **your own** components, tailored to your needs.  
-
-The real power of Toddler lies in **hooks** and **utility functions** found in the  
-`toddler.core`, `toddler.routing`, `toddler.popup` namespaces.
-Components exist mainly to **showcase that the system works**.  
-
-If you’re tired of fighting with UI frameworks and want more flexibility,  
-give Toddler a try. Maybe it will make your UI journey a little less painful. 🚀  
-
