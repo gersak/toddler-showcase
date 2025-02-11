@@ -1,5 +1,5 @@
 
-## Love-Hate Relationship with UI Development
+## UI and Love-Hate Relationship
 
 I've been coding UI for many years. Over time, it has been an emotional experience.
 **I hate UI programming**, and I love it. Few things in programming feel as satisfying
@@ -20,8 +20,12 @@ Each helped in some way, but over time, every single one of them fell short.
 Some bloated my application, others were exhausting to integrate with ClojureScript,
 and many became overloaded with features—sometimes leaning too heavily on JSX.
 
-That's why I built **Toddler**. A lightweight, flexible UI system that helps me cut through  
-this frustration. If you’ve ever felt the same, maybe it can help you too.
+
+Toddler is result of using and than avoiding above libraries. Just taking what I liked from
+libraries and inserting what I thought was missing. 
+
+There was no goal, no ambition. Toddler just came to life...
+
 
 
 ## Providing Components
@@ -42,13 +46,6 @@ using a shared context?
        (when component#
          (helix.core/$ component# {:ref ref# :& props#} children#)))))
 
-(defmacro g
-  "Retrieves and renders a component from the UI context.
-  
-  Example: (g :button {:className "positive"} "Good day")"
-  [key & stuff]
-  `(when-let [component# (get (helix.hooks/use-context __components__) ~key)]
-     (helix.core/$ component# ~@stuff)))
 ```
 
 This means I can **swap components dynamically** by changing the UI context.
@@ -59,7 +56,7 @@ throughout the app.
 ## How It Works (With an Example)
 
 Let's say we want to create a dropdown that can **swap implementations** at runtime.
-We define a generic `dropdown` component that looks for its implementation in the context.
+We define a generic `dropdown` component that looks for its implementation in the context under ```:my/dropdown``` key.
 
 ```clojure
 (ns toddler.showcase.components
@@ -108,20 +105,38 @@ With **Toddler**, components become placeholders, and **UI customization becomes
 
 <div id="components-example"></div>
 
-All reusable components are declared in a single namespace, then used via
-[Helix](https://github.com/lilactown/helix)'s element creation macro ([`$`](https://github.com/lilactown/helix/blob/master/docs/creating-elements.md)).
+
+Toddler provides declared components in the `toddler.ui` namespace. It is recommended to keep  
+all components within a single namespace to minimize complexity.  
+
+The default implementations of Toddler components can be found in the following namespaces:  
+`toddler.ui.elements`, `toddler.ui.fields`, `toddler.ui.tables`, and other `toddler.ui.*` namespaces.  
+
+All implemented components are then grouped together in the `toddler.ui.components` namespace.  
+This simplifies passing components as values to the `toddler.ui/__components__` context.  
+
+Default components are packaged separately from **toddler.core**. You can find the JAR on Clojars:  
+[dev.gersak/toddler-ui](https://clojars.org/dev.gersak/toddler-ui).  
 
 ```clojure
 (defnc MyAppBasedOnToddlerComponents
   {:wrap [(ui/wrap-ui toddler.ui.components/default)]}
   []
-  ;; You can use components from toddler.ui namespace because
-  ;; they are mapped to toddler.ui.components/default
+  ;; You can use components from the toddler.ui namespace because
+  ;; they are mapped to toddler.ui.components/default.
   ($ Stuff))
 
 (defnc MyAppWithSpecialPopup
-   {:wrap [(ui/extend-ui {:popup my-special-implementation})]}
-   []
-   ;; Override or extend the current UI context dynamically
-   )
+  {:wrap [(ui/extend-ui {:popup my-special-implementation})]}
+  []
+  ;; Override or extend the current UI context dynamically.
+)
 ```
+
+## Recommendation  
+If you want to customize the default components, copy the `toddler.ui.*` namespaces  
+and modify the copied code. There is nothing wrong with copy-pasting when working with UI,  
+as long as the codebase remains manageable.  
+
+Hope that Toddler makes it manageable... **Good luck and Godspeed!** 🚀
+

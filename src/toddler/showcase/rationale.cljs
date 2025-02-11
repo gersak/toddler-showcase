@@ -3,6 +3,7 @@
    [goog.string :refer [format]]
    [helix.core :refer [$ defnc <>]]
    [helix.dom :as d]
+   [helix.hooks :as hooks]
    [shadow.css :refer [css]]
    [toddler.core :as toddler]
    [toddler.ui :as ui :refer [!]]
@@ -29,8 +30,6 @@
 
 (def no-js
   (toddler/ml
-   "That is **not true**. But it is not far from it :sunglasses:"
-   ""
    "Toddler is built on top of [Helix](https://github.com/lilactown/helix)"
    " Clojurescript library. Helix is thin wrapper around [React](https://react.dev/),"
    "so Toddler has minimal dependencies on **react** and **react-dom**."
@@ -39,8 +38,8 @@
 
 (def ready-to-grow
   (toddler/ml
-   "This is not a component library. Yes, Toddler includes ready-to-use components,"
-   "but that’s **not** its primary purpose. You are encouraged to create **your own**"
+   "This is not a component library. Yes, Toddler includes **ready-to-use components**,"
+   "but that’s not its primary purpose. You are encouraged to **create your own**"
    "components, tailored to your needs.  "
    ""
    " The real power of Toddler lies in **hooks** and **utility functions** found in the"
@@ -54,7 +53,7 @@
    "components."
    ""
    "[toddler.css](https://github.com/gersak/toddler/blob/main/themes/default/css/toddler.css)"
-   "can be used as template for new theme. Create your own theme css file and load it"
+   " file can be used as template for new theme. Create your own theme css file and load it"
    "in your code by using:"
    ""
    "```clojure"
@@ -68,24 +67,46 @@
    ""
    "[More here](#providing-components)..."))
 
+; (def just-enough
+;   (toddler/ml
+;    "When building UI there it is hard to predict when the"
+;    "time is to reuse code (like in hooks and functions and functional components)"
+;    "and it is better to copy/past code from some other similar part"
+;    ""
+;    "of application. This thin line is focus of this library. Enough not to much"))
+
+(def just-enough
+  (toddler/ml
+   "UI development is unpredictable—**when should you abstract, and when should you copy-paste?**"
+   "Over-abstraction leads to rigid code, while excessive duplication creates maintenance headaches."
+   ""
+   "**The best approach? Copy first, refactor when patterns emerge.**"
+   ""
+   "Toddler is result of practicing this over many years."
+   ""
+   "**Practical. Flexible. Just right.** 🚀"))
+
 (defnc feature-section
   [{:keys [src text]}]
-  ($ ui/row
-     {:className (css :my-2 ["&:first-child" :mt-12])}
-     (d/img
-      {:src src
-       :style {:min-width "170px"}})
-     ($ md/show
-        {:className (css :flex-grow
-                         :mx-4
-                         :ml-6
-                         :my-2
-                         :p-2
-                         :border :rounded-lg :border+ :bg-normal+
-                         {:grow "1"}
-                         ["& p" :text-xxs]
-                         ["& p > code" :text-xxxs])
-         :content text})))
+  (let [base (hooks/use-context toddler.md.context/base)
+        src (str base src)]
+    ($ ui/row
+       {:class ["feature"
+                (css "&.feature:first-of-type" :mt-4)]}
+       ($ md/img
+          {:src src
+           :style {:min-width "170px"}})
+       ($ md/show
+          {:className (css :flex-grow
+                           :mx-4
+                           :ml-6
+                           :my-2
+                           :p-2
+                           :border :rounded-lg :border-normal+ :bg-normal+
+                           {:grow "1"}
+                           ["& p" :text-xs]
+                           ["& p > code" :text-xxs])
+           :content text}))))
 
 (defnc Rationale
   {:wrap [(router/wrap-link
@@ -104,30 +125,30 @@
                       :style {:max-width "48rem"}
                       :className (css
                                   ["& .component" :my-6])}
+             (d/div
+              {:className (css :flex
+                               :my-4
+                               ["& .quote" :color :text-lg :font-medium]
+                               ["& .author" :ml-2 :text-lg :font-base])}
+              (d/div
+               {:className "quote"}
+               "“Children are not things to be molded but are people to be unfolded.”")
+              (d/div
+               {:className "author"}
+               " - Jess Lair"))
+             (d/hr)
              ($ feature-section
-                {:src "/g93081.svg"
+                {:src "/images/low_js_dependency.svg"
                  :text no-js})
              ($ feature-section
-                {:src "/g59618.svg"
+                {:src "images/ready_to_grow.svg"
                  :text ready-to-grow})
              ($ feature-section
-                {:src "/g63223.svg"
+                {:src "/images/themeable.svg"
                  :text themable})
-             #_(d/div
-                {:className "bang"}
-                (d/img
-                 {:src "/g63210.svg"
-                  :width "200px"}))
-             #_(d/div
-                {:className "bang"}
-                (d/img
-                 {:src "/g59634.svg"
-                  :width "200px"}))
-             #_(d/div
-                {:className "bang"}
-                (d/img
-                 {:src "/g63223.svg"
-                  :width "200px"}))
+             ($ feature-section
+                {:src "/images/just_enough.svg"
+                 :text just-enough})
              #_(<>
                 ($ GiphyEmbed
                    {:src screeming-kid

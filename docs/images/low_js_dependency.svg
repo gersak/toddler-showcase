@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="34.484573mm"
+   height="14.052475mm"
+   viewBox="0 0 34.484573 14.052475"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
+   sodipodi:docname="design.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.7022328"
+     inkscape:cx="437.66047"
+     inkscape:cy="610.96227"
+     inkscape:window-width="1333"
+     inkscape:window-height="898"
+     inkscape:window-x="0"
+     inkscape:window-y="38"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient41515">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.99713469;"
+         offset="0"
+         id="stop41511" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.15759312;"
+         offset="1"
+         id="stop41513" />
+    </linearGradient>
+    <rect
+       x="98.12706"
+       y="497.77182"
+       width="127.83449"
+       height="14.546526"
+       id="rect374" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient41515"
+       id="linearGradient57770"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1818169,0,0,1.3730261,-38.646614,-91.38254)"
+       x1="115.0205"
+       y1="171.59816"
+       x2="150.14838"
+       y2="171.59816" />
+    <inkscape:path-effect
+       effect="perspective-envelope"
+       up_left_point="99.298828,499.11"
+       up_right_point="221.32,489.61"
+       down_left_point="99.298828,507.5"
+       down_right_point="220.81641,505.3"
+       id="path-effect571-3-0"
+       is_visible="true"
+       lpeversion="1"
+       deform_type="perspective"
+       horizontal_mirror="false"
+       vertical_mirror="false"
+       overflow_perspective="false" />
+    <inkscape:path-effect
+       effect="perspective-envelope"
+       up_left_point="99.298828,499.11"
+       up_right_point="221.32,489.61"
+       down_left_point="99.298828,507.5"
+       down_right_point="220.81641,505.3"
+       id="path-effect571-3-0-2"
+       is_visible="true"
+       lpeversion="1"
+       deform_type="perspective"
+       horizontal_mirror="false"
+       vertical_mirror="false"
+       overflow_perspective="false" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-131.02597,-156.92068)">
+    <g
+       id="g109227"
+       transform="translate(33.826399,4.6912524)"
+       inkscape:export-filename="./g109227.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <g
+         id="g97873"
+         inkscape:export-filename="g97873.svg"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96"
+         transform="translate(-31.110411,-5.0616144)" />
+      <g
+         id="g126535">
+        <path
+           style="display:inline;fill:#000000;fill-opacity:1;stroke-width:0.289264;stroke-dasharray:none;paint-order:markers fill stroke"
+           d="m 91.588322,178.21404 -4.0837,-4.39141 5.081942,-3.6107 8.167406,-0.19516 4.44669,-3.02519 7.53216,2.73243 6.62467,-0.19518 2.63172,5.8552 -5.71718,5.66002 -4.71895,-2.73243 z"
+           id="path97801-2"
+           sodipodi:nodetypes="ccccccccccc"
+           transform="translate(-31.110411,-5.0616144)" />
+        <path
+           style="display:inline;fill:#f778ae;fill-opacity:1;stroke-width:0.297391;stroke-dasharray:none;paint-order:markers fill stroke"
+           d="m 91.905693,178.56721 -4.314795,-4.39303 5.369523,-3.61204 8.629589,-0.19524 4.69833,-3.02631 7.9584,2.73344 6.99955,-0.19525 2.78065,5.85737 -6.04071,5.66212 -4.98599,-2.73344 z"
+           id="path97801"
+           transform="matrix(0.89911939,0,0,0.88310813,-21.067292,14.839823)"
+           sodipodi:nodetypes="ccccccccccc" />
+        <g
+           aria-label="NO JS DEPENDENCY"
+           transform="matrix(0.37160826,0,0,0.57070377,-0.78616867,-123.8146)"
+           id="text372-0-8"
+           style="white-space:pre;shape-inside:url(#rect374);display:inline;fill-opacity:0.761682"
+           inkscape:path-effect="#path-effect571-3-0">
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.4325px;font-family:SignPainter;-inkscape-font-specification:'SignPainter, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:0.761682;stroke-width:0.869372"
+             x="175.14583"
+             y="497.46066"
+             id="text579-0-0"
+             transform="scale(0.96334753,1.038047)"
+             inkscape:label="text579"><tspan
+               sodipodi:role="line"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.4325px;font-family:SignPainter;-inkscape-font-specification:'SignPainter, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.869372"
+               x="175.14583"
+               y="497.46066"
+               id="tspan581-3-9">LOW JS DEPENDENCY</tspan></text>
+        </g>
+      </g>
+      <g
+         id="g126535-2"
+         transform="translate(40.805362,-9.7005273)">
+        <path
+           style="display:inline;fill:#000000;fill-opacity:1;stroke-width:0.289264;stroke-dasharray:none;paint-order:markers fill stroke"
+           d="m 91.588322,178.21404 -4.0837,-4.39141 5.081942,-3.6107 8.167406,-0.19516 4.44669,-3.02519 7.53216,2.73243 6.62467,-0.19518 2.63172,5.8552 -5.71718,5.66002 -4.71895,-2.73243 z"
+           id="path97801-2-2"
+           sodipodi:nodetypes="ccccccccccc"
+           transform="translate(-31.110411,-5.0616144)" />
+        <path
+           style="display:inline;fill:#f778ae;fill-opacity:1;stroke-width:0.297391;stroke-dasharray:none;paint-order:markers fill stroke"
+           d="m 91.905693,178.56721 -4.314795,-4.39303 5.369523,-3.61204 8.629589,-0.19524 4.69833,-3.02631 7.9584,2.73344 6.99955,-0.19525 2.78065,5.85737 -6.04071,5.66212 -4.98599,-2.73344 z"
+           id="path97801-6"
+           transform="matrix(0.89911939,0,0,0.88310813,-21.067292,14.839823)"
+           sodipodi:nodetypes="ccccccccccc" />
+        <g
+           aria-label="NO JS DEPENDENCY"
+           transform="matrix(0.37160826,0,0,0.57070377,-0.78616867,-123.8146)"
+           id="text372-0-8-2"
+           style="white-space:pre;shape-inside:url(#rect374);display:inline;fill-opacity:0.761682"
+           inkscape:path-effect="#path-effect571-3-0-2">
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.4325px;font-family:SignPainter;-inkscape-font-specification:'SignPainter, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:0.761682;stroke-width:0.869372"
+             x="175.14583"
+             y="497.46066"
+             id="text579-0-0-1"
+             transform="scale(0.96334753,1.038047)"
+             inkscape:label="text579"><tspan
+               sodipodi:role="line"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.4325px;font-family:SignPainter;-inkscape-font-specification:'SignPainter, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.869372"
+               x="175.14583"
+               y="497.46066"
+               id="tspan581-3-9-4">LOW JS DEPENDENCY</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

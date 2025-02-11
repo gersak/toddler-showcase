@@ -30,9 +30,9 @@ that will hold state. Some kind of dispatch would be preferable to keep consiste
 
  * Custom components for cells and rows
 
- * Don't wan't to worry about scrolling and overflowing and resizing. **This is posible if I set
+ * Don't wan't to worry about scrolling and overflowing and resizing. This is posible if I set
  table in container with known height and width so that table can adjust its body and header
- size and width to that container.**
+ size and width to that container.
 
  * Fast rendering. Elements grow exponentially multiplying
 cells and rows. Every unnecessary render will be resource intensive. On cell change I

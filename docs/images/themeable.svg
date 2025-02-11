@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="26.275742mm"
+   height="12.732285mm"
+   viewBox="0 0 26.275742 12.732285"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
+   sodipodi:docname="design.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.7022328"
+     inkscape:cx="437.66047"
+     inkscape:cy="610.96227"
+     inkscape:window-width="1333"
+     inkscape:window-height="898"
+     inkscape:window-x="0"
+     inkscape:window-y="38"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient41515">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.99713469;"
+         offset="0"
+         id="stop41511" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.15759312;"
+         offset="1"
+         id="stop41513" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient41515"
+       id="linearGradient57770"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1818169,0,0,1.3730261,-38.646614,-91.38254)"
+       x1="115.0205"
+       y1="171.59816"
+       x2="150.14838"
+       y2="171.59816" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-91.737337,-201.03739)">
+    <g
+       id="g63223">
+      <path
+         style="display:inline;fill:#000000;fill-opacity:1;stroke-width:0.318026;stroke-dasharray:none;paint-order:markers fill stroke"
+         d="m 93.937772,209.49161 5.258886,4.27806 5.019352,-3.28666 9.02389,3.16523 4.77318,-12.05464 -11.71807,1.60339 -14.557679,-2.1596 4.141994,4.78331 z"
+         id="path62865-3"
+         sodipodi:nodetypes="ccccccccc" />
+      <path
+         style="fill:#fcea79;fill-opacity:1;stroke-width:0.295413;stroke-dasharray:none;paint-order:markers fill stroke"
+         d="m 94.762078,209.37169 4.218594,3.40147 5.182808,-2.98917 8.79876,2.98917 4.21858,-10.71982 -10.84688,1.61439 -13.62089,-2.12976 3.85699,4.43224 z"
+         id="path62865"
+         sodipodi:nodetypes="ccccccccc" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.89943px;font-family:SignPainter;-inkscape-font-specification:'SignPainter, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;display:inline;fill:#000000;fill-opacity:0.761682;stroke-width:0.408284"
+         x="108.20672"
+         y="187.57411"
+         id="text579-0-2-9-1"
+         transform="scale(0.89922475,1.112069)"
+         inkscape:label="text579"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.89943px;font-family:SignPainter;-inkscape-font-specification:'SignPainter, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.408284"
+           x="108.20672"
+           y="187.57411"
+           id="tspan581-3-8-2-1">THEMEABLE</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -166,7 +166,6 @@
         complex-dialog-opened? (router/use-rendered? :toddler.modal.complex-dialog)
         [context set-context!] (hooks/use-state nil)
         close! (use-close)]
-    (println "WIDTH: " width)
     (! :simplebar {:style {:height height
                            :width width}
                    :shadow true}
