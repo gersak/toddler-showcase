@@ -89,25 +89,23 @@
 
 (defnc feature-section
   [{:keys [src text]}]
-  (let [base (hooks/use-context toddler.md.context/base)
-        src (str base src)]
-    ($ ui/row
-       {:class ["feature"
-                (css "&.feature:first-of-type" :mt-4)]}
-       ($ md/img
-          {:src src
-           :style {:min-width "170px"}})
-       ($ md/show
-          {:className (css :flex-grow
-                           :mx-4
-                           :ml-6
-                           :my-2
-                           :p-2
-                           :border :rounded-lg :border-normal+ :bg-normal+
-                           {:grow "1"}
-                           ["& p" :text-xs]
-                           ["& p > code" :text-xxs])
-           :content text}))))
+  ($ ui/row
+     {:class ["feature"
+              (css "&.feature:first-of-type" :mt-4)]}
+     ($ md/img
+        {:src src
+         :style {:min-width "170px"}})
+     ($ md/show
+        {:className (css :flex-grow
+                         :mx-4
+                         :ml-6
+                         :my-2
+                         :p-2
+                         :border :rounded-lg :border-normal+ :bg-normal+
+                         {:grow "1"}
+                         ["& p" :text-xs]
+                         ["& p > code" :text-xxs])
+         :content text})))
 
 (defnc Rationale
   {:wrap [(router/wrap-link
@@ -142,7 +140,7 @@
                 {:src "/images/low_js_dependency.svg"
                  :text no-js})
              ($ feature-section
-                {:src "images/ready_to_grow.svg"
+                {:src "/images/ready_to_grow.svg"
                  :text ready-to-grow})
              ($ feature-section
                 {:src "/images/themeable.svg"
