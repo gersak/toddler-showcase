@@ -1,6 +1,6 @@
 {:paths ["src"]
  :deps
- {dev.gersak/toddler-ui {:mvn/version "0.1.1-SNAPSHOT"}
+ {dev.gersak/toddler-ui {:mvn/version "0.1.1"}
   dev.gersak/toddler-theme {:mvn/version "0.1.0"}
   dev.gersak/toddler-icons {:mvn/version "0.1.0"}}
  :aliases

@@ -2873,6 +2873,7 @@ body {
   font-weight: 700;
   line-height: 1.5rem;
   text-decoration-line: none;
+  user-select: none;
 }
 .toddler_dev__L250_C16 {
   align-items: center;
@@ -2881,6 +2882,102 @@ body {
 }
 .toddler_dev__L264_C18 {
   border-radius: 0.375rem;
+}
+.toddler_md__L22_C3 table tbody {
+  margin-top: 0.5rem;
+  padding: 0.25rem;
+}
+.toddler_md__L22_C3 h4 {
+  margin-top: 1rem;
+}
+.toddler_md__L22_C3 .hljs {
+  background: var(--background-p1);
+}
+.toddler_md__L22_C3 p > code {
+  background: var(--background-m1);
+  border-radius: 0.375rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.125rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+}
+.toddler_md__L22_C3 .code {
+  margin-top: 0.5rem;
+}
+.toddler_md__L22_C3 b, .toddler_md__L22_C3 strong {
+  font-weight: 600;
+}
+.toddler_md__L22_C3 ul li {
+  font-size: 0.76rem;
+  line-height: 1.25rem;
+}
+.toddler_md__L22_C3 a {
+  color: var(--link-color);
+  font-weight: 600;
+}
+.toddler_md__L22_C3 li > code {
+  background: var(--background-m1);
+  border-radius: 0.375rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.125rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+}
+.toddler_md__L22_C3 ul {
+  border: none;
+  border-width: 1px;
+  list-style-type: disc;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+.toddler_md__L22_C3 {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  margin-bottom: 6rem;
+  margin-top: 1rem;
+}
+.toddler_md__L22_C3 pre > code {
+  border-radius: 0.5rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.toddler_md__L22_C3 h3 {
+  margin-top: 1rem;
+}
+.toddler_md__L22_C3 h2 {
+  margin-top: 3rem;
+}
+.toddler_md__L22_C3 h1,.toddler_md__L22_C3 h2,.toddler_md__L22_C3 h3,.toddler_md__L22_C3 h4 {
+  text-transform: uppercase;
+}
+.toddler_md__L22_C3 br {
+  height: 8px;
+}
+.toddler_md__L22_C3 table tr {
+  font-size: 0.6875rem;
+  height: 1.5rem;
+  line-height: 1.125rem;
+}
+.toddler_md__L22_C3 .table-container {
+  background: var(--background-p1);
+  border-color: var(--border-normal-p1);
+  border-radius: 0.5rem;
+  border-width: 1px;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+}
+.toddler_md__L22_C3 p {
+  margin-top: 0.5rem;
 }
 .toddler_notifications__L306_C3 .notification {
   align-items: center;
