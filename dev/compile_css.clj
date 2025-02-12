@@ -10,7 +10,8 @@
 (defonce css-watch-ref (atom nil))
 
 (defn generate-css
-  ([]
+  ([] (generate-css "dev"))
+  ([dir]
    (let [result
          (-> @css-ref
              (cb/generate '{:ui {:include [toddler.ui*
@@ -20,7 +21,7 @@
                                            toddler.dev
                                            toddler.showcase
                                            toddler.showcase*]}})
-             (cb/write-outputs-to (io/file "dev" "css")))]
+             (cb/write-outputs-to (io/file dir "css")))]
      (prn :CSS-GENERATED)
      (doseq [mod (:outputs result)
              {:keys [warning-type] :as warning} (:warnings mod)]

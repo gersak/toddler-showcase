@@ -18,6 +18,7 @@
 (def smooth-slide "https://giphy.com/embed/h8n8aJWronkmvRTB0y")
 (def kid-shocked "https://giphy.com/embed/WUgrpaWVu5FBiqpWtG")
 (def pool-fail "https://giphy.com/embed/3oEdv4r6i9wbC8iX4I")
+(def goku "https://giphy.com/embed/fmMdxlVwsCmTtA4V6a")
 
 (defnc GiphyEmbed [{:keys [src width height]}]
   (d/div

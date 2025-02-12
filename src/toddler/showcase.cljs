@@ -23,7 +23,22 @@
    [toddler.notifications :as notifications]
    [toddler.router :as router]
    [toddler.md.context :as md.context]
+   toddler.i18n.number
+   toddler.i18n.time
+   toddler.i18n
    toddler.i18n.common))
+
+;; TODO - this was attempt to remove unnecessary formating
+;; for time and number formaters. But it turned out
+;; that it app size didn't get significantly smaller
+; (toddler.i18n.time/add-symbols [:hr :de :en :fr :es :ja :zh_CN])
+; (toddler.i18n.number/add-symbols [:hr :de :en :fr :es :ja :zh_CN])
+
+; (toddler.i18n.time/init-all-symbols)
+; (toddler.i18n.number/init-all-symbols)
+
+; (println "SYMBOLS: " toddler.i18n/locales)
+; (cljs.pprint/pprint toddler.i18n.number/*symbols*)
 
 (.log js/console "Loaded showcase!")
 
