@@ -1,5 +1,5 @@
 
-## UI and Love-Hate Relationship
+## UI and Love-Hate
 
 I've been coding UI for many years. Over time, it has been an emotional experience.
 **I hate UI programming**, and I love it. Few things in programming feel as satisfying
@@ -101,7 +101,7 @@ Clicking the **"Change"** button swaps the dropdown component between two implem
 With **Toddler**, components become placeholders, and **UI customization becomes effortless**.
 
 
-## Try It Out
+## [Try It Out](https://github.com/gersak/toddler?tab=readme-ov-file#quickstart)
 
 <div id="components-example"></div>
 

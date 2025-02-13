@@ -44,7 +44,7 @@
    "components, tailored to your needs.  "
    ""
    " The real power of Toddler lies in **hooks** and **utility functions** found in the"
-   "`toddler.core`, `toddler.routing`, `toddler.popup` and other [namespaces](https://gersak.github.io/toddler/codox/index.html)."
+   "`toddler.core`, `toddler.router`, `toddler.popup` and other [namespaces](https://gersak.github.io/toddler/codox/index.html)."
    "Default components exist mainly to **showcase that the system works**."))
 
 (def themable
@@ -63,7 +63,7 @@
    "```"
    ""
    "There is second more brute way of themeing components and  that is"
-   "to provide ```toddler.ui/__component__``` context with your"
+   "to provide ```toddler.ui/__components__``` context with your"
    "implementation of UI components."
    ""
    "[More here](#providing-components)..."))
@@ -103,8 +103,12 @@
                          :p-2
                          :border :rounded-lg :border-normal+ :bg-normal+
                          {:grow "1"}
+                         ["& .code" :mt-2]
                          ["& p" :text-xs]
-                         ["& p > code" :text-xxs])
+                         ["& pre > code" :rounded-lg :my-4 {:line-height "1.5"} :bg-transparent]
+                         ["& li > code" :rounded-lg :my-4 {:line-height "1.5"}]
+                         ["& p > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold]
+                         ["& li > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold])
          :content text})))
 
 (defnc Rationale

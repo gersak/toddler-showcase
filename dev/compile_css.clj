@@ -17,7 +17,7 @@
              (cb/generate '{:ui {:include [toddler.ui*
                                            toddler.md
                                            toddler.notifications
-                                           toddler
+                                           toddler*
                                            toddler.dev
                                            toddler.showcase
                                            toddler.showcase*]}})
@@ -89,5 +89,6 @@
   (-> css-ref deref)
   (-> css-ref deref :namespaces keys)
   (-> css-ref deref :aliases :button-disabled)
+  (re-find #".fade-in.*" (slurp (io/resource "css/toddler.css")))
   (spit "aliases.edn" (-> css-ref deref :aliases :text-sm))
   (go))

@@ -284,44 +284,46 @@ if modal is displayed or not.
 Components like actions, buttons, sensitive information should be protected as well.
 This components don't require **:segment** and can also be protected by Toddler Router.
 
+
 ## LANDING PAGE
-Landing page component will come in handy when working with OAuth authorization code flow.
-When user logs in to authorization server that is compliant with OAuth authorization code flow,
-then authorization server will return response to client on URL that client sent
-during authorization flow request. 
+Is component that listens on browser location pathname change and is triggered when browser
+location is exactly matched. When triggered LocationPage component will walk through
+routing tree and look for route with highest priority, that is highest `:landing` value.
 
-In short client will redirect user to authorize on authorization server and when user
-logs in on authorization server (not client), than authorization server needs to know
-where to redirect user. Client sends something like
+This route is than transformed into URL and browser is redirected to **that** component.
 
-**https://example.app.com/oauth/callback**
+You can use `:enforce-access?` prop to control `LandingPage` logic. When enforced
+it will look for route with highest priority that user can access. In other words
+route that user `:permissions` and/or `:roles` match.
 
-and authorization server will return response with **authorization-code** to that URL.
-
-On "that" URL there is SPA that has implementation that will handle rest of authorization
-code flow to get **access-token**. But what happens when process is finished. What should
-then be displayed? :eyes:
-
-Usually OAuth client side implementation supports some kind of callback that will be
-triggered when process is finished. Still question remains...
 
 ```clojure
+;; First example with wraped landing
+;; keep in mind that landing should go BEFORE wrap-router
+;; Second argument is value of :enforce-access?
+(defnc Minimal
+  {:wrap [(router/wrap-landing "/" false)
+          (router/wrap-router)
+          (wrap-window-provider)
+          (ui/wrap-ui components)]}
+  []
+  (let [[locale set-locale!] (hooks/use-state :hr)
+        [theme set-theme!] (toddler/use-theme-state)]
+    (provider
+     {:context app/locale
+      :value locale}
+     (provider
+      {:context app/theme
+       :value theme}
+      ($ Animals)))))
+
+
+;; Second example with explicitly rendering LandingPage
 (defnc MyApp
   []
   ($ router/Provider
      ($ router/LandingPage
         {:url "/landing"}
         ($ Root))))
+
 ```
-
-Answer is ```LandingPage```. You should add "on sign in finished" callback handler that
-will redirect browser to **/landing** URL. LandingPage will listen location changes
-(when URL changes) and if **/landing** URL is current browser location, than LandingPage
-component will walk through component tree and isolate all components that are marked
-with positive ```:landing *priority*``` and check if user is authorized to access that component.
-
-When all accessible components are filtered, than those components are sorted by landing
-priority and component with highest priority is selected.
-
-URL for that component is resolved by Toddler Router and once again user is redirected to
-URL (component) with highest priority.
