@@ -24,6 +24,7 @@
    [toddler.showcase.theme :as showcase.theme]
    [toddler.notifications :as notifications]
    [toddler.router :as router]
+   [toddler.popup :as popup]
    [toddler.ui.css :as ui.css]
    [toddler.md.context :as md.context]
    toddler.i18n.number
@@ -97,6 +98,7 @@
 (defnc Showcase
   {:wrap [(notifications/wrap-store {:class ui.css/$store})
           (router/wrap-landing "/" false)
+          (popup/wrap-container)
           (wrap-ui default/components)]}
   []
   (provider
