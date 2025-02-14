@@ -117,3 +117,9 @@
              ($ toddler/portal
                 {:locator #(.getElementById js/document "custom-notification-example")}
                 ($ custom-notification-example)))))))
+
+#_(defnc Showcase
+    {:wrap [(notifications/wrap-store {:class toddler.ui.css/$store})
+            (ui/wrap-ui default/components)]}
+    []
+    ($ notifications-example))

@@ -52,7 +52,7 @@ channel. You can style notification Store, and position it where you like in you
 interface. 
 
 It doesn't support any class by default  so you can style it the way you like it or
-you can use ```toddler.notifications/$default``` style.
+you can use reference [$default](https://github.com/gersak/toddler/blob/054d2fbef85ebf434ee699905e3a6cdfc968fe25/ui/src/toddler/ui/css.cljc#L5) style.
 
 
 Now lets try it out
@@ -99,13 +99,11 @@ Now lets try it out
              ($ ui/button {:className "negative" :on-click #(send-message :negative)} "Negative")
              ($ ui/button {:className "warn" :on-click #(send-message :warn)} "Warning"))))))
 
-(defnc MyApp
+(defnc Showcase
+  {:wrap [(notifications/wrap-store {:class toddler.ui.css/$store})
+          (ui/wrap-ui default/components)]}
   []
-  ($ UI
-     {:components default/components}
-     ($ notifications/Store
-        {:class notifications/$default}
-        ($ notifications-example))))
+  ($ notifications-example))
 ```
 
 ## CUSTOMIZING NOTIFICATIONS
