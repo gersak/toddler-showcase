@@ -1,6 +1,5 @@
 (ns toddler.showcase.popup
   (:require
-   [clojure.core.async :as async]
    [shadow.css :refer [css]]
    [toddler.layout :as layout]
    [toddler.router :as router]
@@ -12,8 +11,6 @@
    toddler.showcase.content
    [toddler.core :as toddler]
    [toddler.popup :as popup]
-   [toddler.notifications :as notifications]
-   [toddler.fav6.solid :as solid]
    [toddler.i18n.keyword :refer [add-translations]]))
 
 (add-translations

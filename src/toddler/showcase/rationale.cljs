@@ -3,13 +3,13 @@
    [goog.string :refer [format]]
    [helix.core :refer [$ defnc <>]]
    [helix.dom :as d]
-   [helix.hooks :as hooks]
    [shadow.css :refer [css]]
    [toddler.core :as toddler]
    [toddler.ui :as ui :refer [!]]
    [toddler.layout :as layout]
    [toddler.md.lazy :as md]
    [toddler.router :as router]
+   [toddler.showcase.theme :as showcase.theme]
    [toddler.showcase.components :refer [MyApp]]))
 
 (def screeming-kid "https://giphy.com/embed/3oEduOnl5IHM5NRodO")
@@ -88,6 +88,20 @@
    "**Practical. Flexible. Just right.** 🚀"))
 
 (defnc feature-section
+  {:wrap [(md/wrap-show {:className (css :flex-grow
+                                         :mx-4
+                                         :ml-6
+                                         :my-2
+                                         :p-4
+                                         :border :rounded-lg :border-normal+ :bg-normal+
+                                         {:grow "1"}
+                                         ["& .code" :mt-2]
+                                         ["& p" :text-xs]
+                                         ["& pre > code" :rounded-lg :my-4 {:line-height "1.5"} :bg-transparent]
+                                         ["& li > code" :rounded-lg :my-4 {:line-height "1.5"}]
+                                         ["& p > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold]
+                                         ["& li > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold])
+                         :on-theme-change showcase.theme/change-highligh-js})]}
   [{:keys [src text]}]
   ($ ui/row
      {:class ["feature"

@@ -9,6 +9,7 @@
    [toddler.ui :refer [wrap-ui]]
    [toddler.ui.components :as default]
    [helix.core :refer [$ defnc provider]]
+   [toddler.head :as head]
    [toddler.showcase.layout :refer [Layout]]
    [toddler.showcase.inputs :refer [Inputs]]
    [toddler.showcase.table :refer [Table TableGrid]]
@@ -20,8 +21,10 @@
    [toddler.showcase.modal :refer [Modal]]
    [toddler.showcase.notifications :refer [Notifications]]
    [toddler.showcase.rationale :refer [Rationale]]
+   [toddler.showcase.theme :as showcase.theme]
    [toddler.notifications :as notifications]
    [toddler.router :as router]
+   [toddler.ui.css :as ui.css]
    [toddler.md.context :as md.context]
    toddler.i18n.number
    toddler.i18n.time
@@ -89,24 +92,20 @@
    {:id :toddler.icons
     :name :showcase.icons
     :render Icons
-    :segment "icons"}
-   #_{:id :toddler.prosemirror
-      :name :showcase.prosemirror
-      :render ProseMirror
-      :segment "prosemirror"}])
+    :segment "icons"}])
 
 (defnc Showcase
-  {:wrap [(wrap-ui default/components)]}
+  {:wrap [(notifications/wrap-store {:class ui.css/$store})
+          (router/wrap-landing "/" false)
+          (wrap-ui default/components)]}
   []
-  ($ router/LandingPage
-     {:url "/"
-      :enforce-access? false}
-     ($ notifications/Store
-        {:class notifications/$default}
-        ($ dev/playground
-           {:max-width 1000
-            :components routes})))
-
+  (provider
+   {:context md.context/show
+    :value {:className ui.css/$md
+            :on-theme-change showcase.theme/change-highligh-js}}
+   ($ dev/playground
+      {:max-width 1000
+       :components routes}))
   ;; TODO - Strict mode causes problems with popup window
   #_($ react/StrictMode
        ($ router/Provider
@@ -121,9 +120,8 @@
        :value 0}
       (provider
        {:context md.context/base
-        ; :value "https://raw.githubusercontent.com/gersak/toddler/refs/heads/prep/github-page/dev"}
-        :value "https://raw.githubusercontent.com/gersak/toddler-showcase/refs/heads/main/docs"}
-       ($ Showcase)))))
+          ; :value "https://raw.githubusercontent.com/gersak/toddler/refs/heads/prep/github-page/dev"}
+        :value "https://raw.githubusercontent.com/gersak/toddler-showcase/refs/heads/main/docs"}))))
 
 (defn start! []
   (.log js/console "Starting Toddler showcase!")
