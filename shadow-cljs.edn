@@ -19,7 +19,8 @@
            :asset-path "/toddler-showcase/js"
            :module-loader true
            :modules {:main
-                     {:entries [toddler.showcase.github]}
+                     {:entries [toddler.showcase.github]
+                      :init-fn toddler.showcase.github/start!}
                      :markdown
                      {:entries [toddler.md]
                       :depends-on #{:main}}}

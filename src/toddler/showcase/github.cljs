@@ -13,6 +13,7 @@
 
 (defnc LoadShowcase
   []
+  (.log js/console "Mounting showcase component!")
   ($ router/Provider
      {:base "toddler"}
      (provider
@@ -33,4 +34,5 @@
       (reset! root ^js (createRoot target)))
     (.render ^js @root ($ LoadShowcase))))
 
-(start!)
+(.log js/console "Showcase loaded!")
+; (start!)
