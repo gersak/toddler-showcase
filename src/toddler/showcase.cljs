@@ -112,28 +112,3 @@
   #_($ react/StrictMode
        ($ router/Provider
           ($ dev/playground {:components routes}))))
-
-(defnc LoadShowcase
-  []
-  ($ router/Provider
-     {:base "toddler"}
-     (provider
-      {:context md.context/refresh-period
-       :value 0}
-      (provider
-       {:context md.context/base
-        :value "https://raw.githubusercontent.com/gersak/toddler-showcase/refs/heads/main/docs"}))))
-
-; (defn start! []
-;   (.log js/console "Starting Toddler showcase!")
-;   (t/set-min-level! :info)
-;   ; (t/set-min-level! :log "toddler.md" :debug)
-;   ; (t/set-min-level! :log "toddler.routing" :debug)
-;   (let [target ^js (.getElementById js/document "app")]
-;     (when-not @root
-;       (reset! root ^js (createRoot target)))
-;     (.log js/console "Rendering playground")
-;     (.render ^js @root ($ LoadShowcase))))
-
-; (start!)
-; (set! (.-start js/window) start!)
