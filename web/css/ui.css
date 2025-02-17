@@ -3101,6 +3101,10 @@ html[data-theme="light"] hr {
   margin-top: 0.5rem;
   padding: 1rem;
 }
+.toddler_showcase_rationale__L91_C37 a {
+  color: var(--link-color);
+  font-weight: 600;
+}
 .toddler_showcase_rationale__L91_C37 .code {
   margin-top: 0.5rem;
 }
@@ -3139,10 +3143,10 @@ html[data-theme="light"] hr {
   padding-right: 0.5rem;
   padding-top: 0.25rem;
 }
-.toddler_showcase_rationale__L108_C15 {
+.toddler_showcase_rationale__L109_C15 {
   margin-top: 1rem;
 }
-.toddler_showcase_rationale__L113_C21 {
+.toddler_showcase_rationale__L114_C21 {
   background: var(--background-p1);
   border-color: var(--border-normal-p1);
   border-radius: 0.5rem;
@@ -3154,21 +3158,21 @@ html[data-theme="light"] hr {
   margin-top: 0.5rem;
   padding: 0.5rem;
 }
-.toddler_showcase_rationale__L113_C21 .code {
+.toddler_showcase_rationale__L114_C21 .code {
   margin-top: 0.5rem;
 }
-.toddler_showcase_rationale__L113_C21 p {
+.toddler_showcase_rationale__L114_C21 p {
   font-size: 0.76rem;
   line-height: 1.25rem;
 }
-.toddler_showcase_rationale__L113_C21 pre > code {
+.toddler_showcase_rationale__L114_C21 pre > code {
   background-color: transparent;
   border-radius: 0.5rem;
   line-height: 1.5;
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
-.toddler_showcase_rationale__L113_C21 li > code {
+.toddler_showcase_rationale__L114_C21 li > code {
   background: var(--background-m1);
   border-radius: 0.375rem;
   font-size: 0.6875rem;
@@ -3181,7 +3185,7 @@ html[data-theme="light"] hr {
   padding-right: 0.5rem;
   padding-top: 0.25rem;
 }
-.toddler_showcase_rationale__L113_C21 p > code {
+.toddler_showcase_rationale__L114_C21 p > code {
   background: var(--background-m1);
   border-radius: 0.375rem;
   font-size: 0.6875rem;
@@ -3192,22 +3196,22 @@ html[data-theme="light"] hr {
   padding-right: 0.5rem;
   padding-top: 0.25rem;
 }
-.toddler_showcase_rationale__L143_C34 .component {
+.toddler_showcase_rationale__L144_C34 .component {
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
 }
-.toddler_showcase_rationale__L146_C27 {
+.toddler_showcase_rationale__L147_C27 {
   display: flex;
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
-.toddler_showcase_rationale__L146_C27 .quote {
+.toddler_showcase_rationale__L147_C27 .quote {
   color: var(--color);
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.75rem;
 }
-.toddler_showcase_rationale__L146_C27 .author {
+.toddler_showcase_rationale__L147_C27 .author {
   font-size: 1.125rem;
   line-height: 1.75rem;
   margin-left: 0.5rem;

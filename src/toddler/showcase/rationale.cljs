@@ -12,13 +12,13 @@
    [toddler.showcase.theme :as showcase.theme]
    [toddler.showcase.components :refer [MyApp]]))
 
-(def screeming-kid "https://giphy.com/embed/3oEduOnl5IHM5NRodO")
-(def oops-kid "https://giphy.com/embed/9ZRHvd4j02Qda09B25")
-(def dj-kid "https://giphy.com/embed/mDGL3G97HPIh3X7OXe")
-(def smooth-slide "https://giphy.com/embed/h8n8aJWronkmvRTB0y")
-(def kid-shocked "https://giphy.com/embed/WUgrpaWVu5FBiqpWtG")
-(def pool-fail "https://giphy.com/embed/3oEdv4r6i9wbC8iX4I")
-(def goku "https://giphy.com/embed/fmMdxlVwsCmTtA4V6a")
+; (def screeming-kid "https://giphy.com/embed/3oEduOnl5IHM5NRodO")
+; (def oops-kid "https://giphy.com/embed/9ZRHvd4j02Qda09B25")
+; (def dj-kid "https://giphy.com/embed/mDGL3G97HPIh3X7OXe")
+; (def smooth-slide "https://giphy.com/embed/h8n8aJWronkmvRTB0y")
+; (def kid-shocked "https://giphy.com/embed/WUgrpaWVu5FBiqpWtG")
+; (def pool-fail "https://giphy.com/embed/3oEdv4r6i9wbC8iX4I")
+; (def goku "https://giphy.com/embed/fmMdxlVwsCmTtA4V6a")
 
 (defnc GiphyEmbed [{:keys [src width height]}]
   (d/div
@@ -95,6 +95,7 @@
                                          :p-4
                                          :border :rounded-lg :border-normal+ :bg-normal+
                                          {:grow "1"}
+                                         ["& a" {:color "var(--link-color)" :font-weight "600"}]
                                          ["& .code" :mt-2]
                                          ["& p" :text-xs]
                                          ["& pre > code" :rounded-lg :my-4 {:line-height "1.5"} :bg-transparent]
