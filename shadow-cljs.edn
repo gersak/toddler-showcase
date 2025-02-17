@@ -15,12 +15,11 @@
            :output-to "dev/js/main.js"}
           :github
           {:target :browser
-           :entries [toddler.showcase]
+           :entries [toddler.showcase.github]
            :asset-path "/toddler-showcase/js"
            :module-loader true
            :modules {:main
-                     {:entries [toddler.showcase]
-                      :init-fn toddler.showcase/start!}
+                     {:entries [toddler.showcase.github]}
                      :markdown
                      {:entries [toddler.md]
                       :depends-on #{:main}}}
