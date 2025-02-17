@@ -23,7 +23,7 @@
        {:context md.context/base
         :value "https://raw.githubusercontent.com/gersak/toddler-showcase/refs/heads/main/docs"}))))
 
-(defn start! []
+(defn ^:dev/after-load start! []
   (.log js/console "Starting Toddler showcase!")
   ; (t/set-min-level! :debug)
   ; (t/set-min-level! :log "toddler.md" :debug)
@@ -34,5 +34,4 @@
       (reset! root ^js (createRoot target)))
     (.render ^js @root ($ LoadShowcase))))
 
-(.log js/console "Showcase loaded!")
 ; (start!)
