@@ -66,7 +66,7 @@
    "to provide ```toddler.ui/__components__``` context with your"
    "implementation of UI components."
    ""
-   "[More here](./#providing-components)..."))
+   "[More here](#providing-components)..."))
 
 ; (def just-enough
 ;   (toddler/ml
