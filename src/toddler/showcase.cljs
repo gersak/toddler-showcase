@@ -122,18 +122,18 @@
        :value 0}
       (provider
        {:context md.context/base
-          ; :value "https://raw.githubusercontent.com/gersak/toddler/refs/heads/prep/github-page/dev"}
         :value "https://raw.githubusercontent.com/gersak/toddler-showcase/refs/heads/main/docs"}))))
 
-(defn start! []
-  (.log js/console "Starting Toddler showcase!")
-  (t/set-min-level! :info)
-  ; (t/set-min-level! :log "toddler.md" :debug)
-  ; (t/set-min-level! :log "toddler.routing" :debug)
-  (let [target ^js (.getElementById js/document "app")]
-    (when-not @root
-      (reset! root ^js (createRoot target)))
-    (.log js/console "Rendering playground")
-    (.render ^js @root ($ LoadShowcase))))
+; (defn start! []
+;   (.log js/console "Starting Toddler showcase!")
+;   (t/set-min-level! :info)
+;   ; (t/set-min-level! :log "toddler.md" :debug)
+;   ; (t/set-min-level! :log "toddler.routing" :debug)
+;   (let [target ^js (.getElementById js/document "app")]
+;     (when-not @root
+;       (reset! root ^js (createRoot target)))
+;     (.log js/console "Rendering playground")
+;     (.render ^js @root ($ LoadShowcase))))
 
-(set! (.-start js/window) start!)
+; (start!)
+; (set! (.-start js/window) start!)
