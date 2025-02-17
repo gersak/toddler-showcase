@@ -6,4 +6,7 @@ dev/js
 
 .DS_Store
 .cpcache/
+.clj-kondo/
+.lsp/
+docs/design.svg
 package-lock.json
