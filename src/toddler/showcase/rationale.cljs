@@ -109,7 +109,7 @@
               (css "&.feature:first-of-type" :mt-4)]}
      ($ md/img
         {:src src
-         :style {:min-width "170px"}})
+         :style {:width "170px"}})
      ($ md/show
         {:className (css :flex-grow
                          :mx-4
@@ -156,16 +156,16 @@
                " - Jess Lair"))
              (d/hr)
              ($ feature-section
-                {:src "/images/low_js_dependency.svg"
+                {:src "/images/low_js_dependency.png"
                  :text no-js})
              ($ feature-section
-                {:src "/images/ready_to_grow.svg"
+                {:src "/images/ready_to_grow.png"
                  :text ready-to-grow})
              ($ feature-section
-                {:src "/images/themeable.svg"
+                {:src "/images/themeable.png"
                  :text themable})
              ($ feature-section
-                {:src "/images/just_enough.svg"
+                {:src "/images/just_enough.png"
                  :text just-enough})
              #_(<>
                 ($ GiphyEmbed
