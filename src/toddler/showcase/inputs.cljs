@@ -164,7 +164,7 @@
        (! :row {:align :center}
           (! :column
              {:align :center
-              :style {:max-width "30rem"}
+              :style {:max-width (min width 600)}
               :className (css
                           ["& .example-field" :my-5])}
              ($ md/watch-url {:url "/inputs.md"})

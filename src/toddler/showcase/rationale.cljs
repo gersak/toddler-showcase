@@ -104,27 +104,53 @@
                                          ["& li > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold])
                          :on-theme-change showcase.theme/change-highligh-js})]}
   [{:keys [src text]}]
-  ($ ui/row
-     {:class ["feature"
-              (css "&.feature:first-of-type" :mt-4)]}
-     ($ md/img
-        {:src src
-         :style {:width "170px"}})
-     ($ md/show
-        {:className (css :flex-grow
-                         :mx-4
-                         :ml-6
-                         :my-2
-                         :p-2
-                         :border :rounded-lg :border-normal+ :bg-normal+
-                         {:grow "1"}
-                         ["& .code" :mt-2]
-                         ["& p" :text-xs]
-                         ["& pre > code" :rounded-lg :my-4 {:line-height "1.5"} :bg-transparent]
-                         ["& li > code" :rounded-lg :my-4 {:line-height "1.5"}]
-                         ["& p > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold]
-                         ["& li > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold])
-         :content text})))
+  (let [{window-width :width} (toddler/use-window-dimensions)
+        mobile? (< window-width 800)]
+    (if mobile?
+      ($ ui/column
+         ($ ui/row
+            {:align :center
+             :className (css :mt-4)}
+            ($ md/img
+               {:src src
+                :style {:width "170px"}}))
+         ($ ui/row
+            ($ md/show
+               {:className (css :flex-grow
+                                :mx-4
+                                :ml-6
+                                :my-2
+                                :p-2
+                                :border :rounded-lg :border-normal+ :bg-normal+
+                                {:grow "1"}
+                                ["& .code" :mt-2]
+                                ["& p" :text-xs]
+                                ["& pre > code" :rounded-lg :my-4 {:line-height "1.5"} :bg-transparent]
+                                ["& li > code" :rounded-lg :my-4 {:line-height "1.5"}]
+                                ["& p > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold]
+                                ["& li > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold])
+                :content text})))
+      ($ ui/row
+         {:class ["feature"
+                  (css "&.feature:first-of-type" :mt-4)]}
+         ($ md/img
+            {:src src
+             :style {:width "170px"}})
+         ($ md/show
+            {:className (css :flex-grow
+                             :mx-4
+                             :ml-6
+                             :my-2
+                             :p-2
+                             :border :rounded-lg :border-normal+ :bg-normal+
+                             {:grow "1"}
+                             ["& .code" :mt-2]
+                             ["& p" :text-xs]
+                             ["& pre > code" :rounded-lg :my-4 {:line-height "1.5"} :bg-transparent]
+                             ["& li > code" :rounded-lg :my-4 {:line-height "1.5"}]
+                             ["& p > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold]
+                             ["& li > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold])
+             :content text})))))
 
 (defnc Rationale
   {:wrap [(router/wrap-link
@@ -135,24 +161,28 @@
              :hash "future"}])
           (router/wrap-rendered :toddler.rationale)]}
   []
-  (let [{:keys [height width]} (layout/use-container-dimensions)]
+  (let [{:keys [height width]} (layout/use-container-dimensions)
+        {window-width :width} (toddler/use-window-dimensions)]
     (! :simplebar {:style {:height height
                            :width width}}
        (! :row {:align :center}
           (! :column {:align :center
-                      :style {:max-width "48rem"}
+                      :style {:max-width (min 600 window-width)}
                       :className (css
                                   ["& .component" :my-6])}
              (d/div
               {:className (css :flex
                                :my-4
+                               :px-4
+                               :flex-col
                                ["& .quote" :color :text-lg :font-medium]
                                ["& .author" :ml-2 :text-lg :font-base])}
               (d/div
                {:className "quote"}
                "“Children are not things to be molded but are people to be unfolded.”")
               (d/div
-               {:className "author"}
+               {:className "author"
+                :style {:min-width 150}}
                " - Jess Lair"))
              (d/hr)
              ($ feature-section

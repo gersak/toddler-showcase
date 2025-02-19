@@ -48,6 +48,7 @@
   {:wrap [(router/wrap-rendered :toddler.icons)]}
   (let [{:keys [height]} (layout/use-container-dimensions)
         [message {message-height :height}] (toddler/use-dimensions)
+        {window-width :width} (toddler/use-window-dimensions)
         height (- height message-height)
         opened (router/use-rendered? ::info)
         open-modal (router/use-go-to ::info)
@@ -80,13 +81,13 @@
      (when opened
        ($ ui/modal-dialog
           {:on-close #(close-modal)
-           :className (css {:max-width "700px"})}
+           :style {:width (min window-width 700)}}
           (d/div {:className "title"} "How?")
           (d/div
            {:className "content"}
            ($ ui/simplebar
               {:style {:max-height (- height 100)
-                       :min-width 600}}
+                       :width (min 640 (- window-width 60))}}
               ($ md/watch-url {:url "/icons.md"})))
           (d/div
            {:className "footer"})))
