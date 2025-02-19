@@ -8,5 +8,6 @@ dev/js
 .cpcache/
 .clj-kondo/
 .lsp/
+src-tauri/
 docs/design.svg
 package-lock.json

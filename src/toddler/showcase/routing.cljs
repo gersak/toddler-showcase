@@ -67,15 +67,15 @@
           "\n```")})
      (! :row
         {:position :center}
-        (! :button {:on-click #(open-modal)} "GO TO MODAL")
+        (! :button {:on-click #(open-modal)} "MODAL")
         (! :button {:on-click #(set-query!
                                 {:test1 100
                                  :test2 "John"
                                  :test3 :test3
                                  :test4 ["100" "200" :goo 400]})}
-           "CHANGE QUERY")
+           "QUERY")
         (! :button {:on-click #(reset)} "RESET")
-        (! :button {:on-click #(go-to-landing)} "GO TO FRAGMENT"))
+        (! :button {:on-click #(go-to-landing)} "FRAGMENT"))
      ($ ModalTest))))
 
 (defnc public-route

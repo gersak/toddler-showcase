@@ -31,7 +31,8 @@
 (defnc dialog-example
   [{:keys [opened? context]}]
   (let [close! (use-close)
-        translate (toddler/use-translate)]
+        translate (toddler/use-translate)
+        {window-width :width} (toddler/use-window-dimensions)]
     (when opened?
       ($ ui/modal-dialog
          {:on-close close!
@@ -41,7 +42,7 @@
           (translate :showcase.modal.dialog.title))
          (d/div
           {:class "content"
-           :style {:max-width 400}}
+           :style {:max-width (min 400 (- window-width 60))}}
           (d/pre
            {:className (css :mt-4 :word-break :whitespace-pre-wrap)}
            (translate :showcase.content.large)))
