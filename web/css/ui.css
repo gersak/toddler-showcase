@@ -396,7 +396,7 @@ html[data-theme="light"] body {
 
 html[data-theme="light"] input::placeholder,
 textarea::placeholder {
-  color: #232323;
+  color: #828282;
 }
 
 
@@ -408,7 +408,7 @@ html[data-theme="dark"] body {
 
 html[data-theme="dark"] input::placeholder,
 textarea::placeholder {
-  color: #838383;
+  color: #828282;
 }
 
 
@@ -793,7 +793,7 @@ textarea {
 
 input::placeholder,
 textarea::placeholder {
-  font-weight: 300;
+  font-weight: 400;
   color: var(--placeholder-normal);
 }
 
@@ -2425,7 +2425,6 @@ html[data-theme="light"] hr {
 }
 .toddler_ui_fields__L75_C3 input::placeholder, .toddler_ui_fields__L75_C3 textarea::placeholder {
   font-style: normal;
-  font-weight: 500;
   user-select: none;
 }
 .toddler_ui_fields__L75_C3 textarea {
@@ -2796,10 +2795,10 @@ html[data-theme="light"] hr {
   padding: 1rem;
 }
 .toddler_dev__L75_C20 {
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  padding-top: 0.5rem;
+  padding-top: 0.25rem;
 }
 .toddler_dev__L75_C20 a {
   text-decoration-line: none;
