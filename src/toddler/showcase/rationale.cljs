@@ -88,69 +88,47 @@
    "**Practical. Flexible. Just right.** 🚀"))
 
 (defnc feature-section
-  {:wrap [(md/wrap-show {:className (css :flex-grow
-                                         :mx-4
-                                         :ml-6
-                                         :my-2
-                                         :p-4
-                                         :border :rounded-lg :border-normal+ :bg-normal+
-                                         {:grow "1"}
-                                         ["& a" {:color "var(--link-color)" :font-weight "600"}]
-                                         ["& .code" :mt-2]
-                                         ["& p" :text-xs]
-                                         ["& pre > code" :rounded-lg :my-4 {:line-height "1.5"} :bg-transparent]
-                                         ["& li > code" :rounded-lg :my-4 {:line-height "1.5"}]
-                                         ["& p > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold]
-                                         ["& li > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold])
+  {:wrap [(md/wrap-show {:className (css
+                                     ["& a" {:color "var(--link-color)" :font-weight "600"}]
+                                     ["& code" :mt-2]
+                                     ["& p" :text-xs]
+                                     ["& pre > code" :rounded-lg :my-4 {:line-height "1.5"} :bg-transparent]
+                                     ["& li > code" :rounded-lg :my-4 {:line-height "1.5"}]
+                                     ["& p > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold]
+                                     ["& li > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold])
                          :on-theme-change showcase.theme/change-highligh-js})]}
   [{:keys [src text]}]
   (let [{window-width :width} (toddler/use-window-dimensions)
         mobile? (< window-width 800)]
-    (if mobile?
-      ($ ui/column
-         ($ ui/row
-            {:align :center
-             :className (css :mt-4)}
-            ($ md/img
-               {:src src
-                :style {:width "170px"}}))
-         ($ ui/row
-            ($ md/show
-               {:className (css :flex-grow
-                                :mx-4
-                                :ml-6
-                                :my-2
-                                :p-2
-                                :border :rounded-lg :border-normal+ :bg-normal+
-                                {:grow "1"}
-                                ["& .code" :mt-2]
-                                ["& p" :text-xs]
-                                ["& pre > code" :rounded-lg :my-4 {:line-height "1.5"} :bg-transparent]
-                                ["& li > code" :rounded-lg :my-4 {:line-height "1.5"}]
-                                ["& p > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold]
-                                ["& li > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold])
-                :content text})))
-      ($ ui/row
-         {:class ["feature"
-                  (css "&.feature:first-of-type" :mt-4)]}
-         ($ md/img
-            {:src src
-             :style {:width "170px"}})
-         ($ md/show
-            {:className (css :flex-grow
-                             :mx-4
-                             :ml-6
-                             :my-2
-                             :p-2
-                             :border :rounded-lg :border-normal+ :bg-normal+
-                             {:grow "1"}
-                             ["& .code" :mt-2]
-                             ["& p" :text-xs]
-                             ["& pre > code" :rounded-lg :my-4 {:line-height "1.5"} :bg-transparent]
-                             ["& li > code" :rounded-lg :my-4 {:line-height "1.5"}]
-                             ["& p > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold]
-                             ["& li > code" :py-1 :px-2 :rounded-md :text-xxs :bg-normal- :font-semibold])
-             :content text})))))
+    (d/div
+     {:className (css
+                  :flex-grow
+                  :mx-4
+                  :ml-6
+                  :my-2
+                  :p-4
+                  :border :rounded-lg :border-normal+ :bg-normal+
+                  {:grow "1"})}
+     (if mobile?
+       ($ ui/column
+          ($ ui/row
+             {:align :center
+              :className (css :mt-4)}
+             ($ md/img
+                {:src src
+                 :style {:width "170px"}}))
+          ($ ui/row
+             {:style {:max-width window-width}}
+             ($ md/show
+                {:content text})))
+       ($ ui/row
+          {:class ["feature"
+                   (css "&.feature:first-of-type" :mt-4)]}
+          ($ md/img
+             {:src src
+              :style {:width "170px"}})
+          ($ md/show
+             {:content text}))))))
 
 (defnc Rationale
   {:wrap [(router/wrap-link

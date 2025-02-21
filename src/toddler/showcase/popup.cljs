@@ -48,12 +48,11 @@
             :on-change set-preference!
             :placeholder "Choose position..."
             :options popup/default-preference})
-        (d/div
-         {:style {:max-width 100}}
-         (! :field/integer
-            {:name "Offset"
-             :value offset
-             :on-change set-offset!})))
+        (! :field/integer
+           {:name "Offset"
+            :value offset
+            :className (css {:max-width "80px"})
+            :on-change set-offset!}))
      ;; Popup button layout
      (! :row {:align :center}
         (! :column {:position :center
@@ -122,14 +121,15 @@
              :hash "tooltip"}])]}
   []
   (let [{:keys [height width]} (layout/use-container-dimensions)]
-    (! :simplebar
+    (println "WIDT: " width)
+    ($ ui/simplebar
        {:style {:height height
                 :width width}
         :shadow true}
-       (! :row {:align :center}
-          (! :column
+       ($ ui/row {:align :center}
+          ($ ui/column
              {:align :center
-              :style {:max-width (min 500 (- width 40))}}
+              :style {:max-width (min 500 width)}}
              ($ md/watch-url {:url "/popup.md"})
              ($ toddler/portal
                 {:locator #(.getElementById js/document "popup-example")}

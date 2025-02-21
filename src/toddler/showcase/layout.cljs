@@ -268,7 +268,7 @@
 (defnc tabs-example
   []
   (let [{:keys [width height]} (layout/use-container-dimensions)
-        width (- width 200)]
+        width (- width 40)]
     ($ ui/row
        {:align :center}
        (d/div
@@ -305,7 +305,8 @@
                       {:i "four" :x 0 :y 2 :w 4 :h 2}]}]
     (<>
      ($ ui/row
-        {:align :center}
+        {:align :center
+         :className (css :overflow-hidden)}
         ($ ui/row
            {:className (css :my-4 {:max-width "200px"})}
            ($ ui/dropdown-field
@@ -314,7 +315,8 @@
                :on-change #(set-dimensions! assoc 0 %)
                :options [300 400 600]})))
      ($ ui/row
-        {:align :center}
+        {:align :center
+         :className (css :overflow-hidden)}
         (let [$box (css :flex :w-full :h-full
                         :justify-center :items-center
                         :font-bold :text-xl)]
@@ -354,7 +356,7 @@
                 :width width}}
        ($ ui/row {:align :center}
           ($ ui/column
-             {:style {:max-width (min 640 (- width 40))}
+             {:style {:max-width (min 640 width)}
               :className (css
                           ["& .component" :my-6])}
              ($ md/watch-url {:url "/layout.md"})
