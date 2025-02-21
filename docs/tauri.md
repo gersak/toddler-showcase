@@ -38,4 +38,6 @@ sudo xcodebuild -license accept
 
 cargo install cargo-tauri
 
+cargo tauri ios init
+cargo tauri ios dev
 ```
