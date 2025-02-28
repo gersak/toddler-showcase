@@ -101,14 +101,16 @@
   (let [{window-width :width} (toddler/use-window-dimensions)
         mobile? (< window-width 800)]
     (d/div
-     {:className (css
-                  :flex-grow
-                  :mx-4
-                  :ml-6
-                  :my-2
-                  :p-4
-                  :border :rounded-lg :border-normal+ :bg-normal+
-                  {:grow "1"})}
+     {:class ["feature"
+              (css
+               :flex-grow
+               :mx-4
+               :ml-6
+               :mb-2
+               :mt-6
+               :p-4
+               :border :rounded-lg :border-normal+ :bg-normal+
+               {:grow "1"})]}
      (if mobile?
        ($ ui/column
           ($ ui/row
@@ -122,11 +124,10 @@
              ($ md/show
                 {:content text})))
        ($ ui/row
-          {:class ["feature"
-                   (css "&.feature:first-of-type" :mt-4)]}
           ($ md/img
              {:src src
-              :style {:width "170px"}})
+              :style {:width "170px"
+                      :padding-right "24px"}})
           ($ md/show
              {:content text}))))))
 

@@ -2,14 +2,16 @@
   {:shadow.css/include ["css/toddler.css"]}
   (:require
    ["react" :as react]
-   ["react-dom/client" :refer [createRoot]]
-   [helix.dom :as d]
    [taoensso.telemere :as t]
-   [toddler.dev :as dev]
+   [toddler.app :as app]
+   [toddler.docs :as docs]
+   [toddler.core :as toddler]
    [toddler.ui :refer [wrap-ui]]
    [toddler.ui.components :as default]
+   [toddler.window :as window]
+   [toddler.notifications :as notifications]
+   [toddler.popup :as popup]
    [helix.core :refer [$ defnc provider]]
-   [toddler.head :as head]
    [toddler.showcase.layout :refer [Layout]]
    [toddler.showcase.inputs :refer [Inputs]]
    [toddler.showcase.table :refer [Table TableGrid]]
@@ -22,11 +24,9 @@
    [toddler.showcase.notifications :refer [Notifications]]
    [toddler.showcase.rationale :refer [Rationale]]
    [toddler.showcase.theme :as showcase.theme]
-   [toddler.notifications :as notifications]
    [toddler.router :as router]
-   [toddler.popup :as popup]
    [toddler.ui.css :as ui.css]
-   [toddler.md.context :as md.context]
+   [toddler.md.lazy :as md]
    toddler.i18n.number
    toddler.i18n.time
    toddler.i18n
@@ -43,10 +43,6 @@
 
 ; (println "SYMBOLS: " toddler.i18n/locales)
 ; (cljs.pprint/pprint toddler.i18n.number/*symbols*)
-
-(.log js/console "Loaded showcase!")
-
-(defonce root (atom nil))
 
 (def routes
   [{:id :toddler.rationale
@@ -83,31 +79,39 @@
     :render Notifications
     :segment "notifications"}
    {:id :toddler.routing
-    :name :showcase.routing
+    :name "Routing"
     :render Routing
     :segment "routing"}
    {:id :toddler.i18n
-    :name :showcase.i18n
+    :name "i18n"
     :render i18n
     :segment "i18n"}
    {:id :toddler.icons
-    :name :showcase.icons
+    :name "Icons"
     :render Icons
     :segment "icons"}])
 
 (defnc Showcase
-  {:wrap [(notifications/wrap-store {:class ui.css/$store})
+  {:wrap [(router/wrap-link ::router/ROOT routes)
+          (toddler/wrap-theme ::theme)
+          (md/wrap-show {:className ui.css/$md
+                         :on-theme-change showcase.theme/change-highligh-js})
+          (notifications/wrap-store {:class ui.css/$store})
           (router/wrap-landing "/" false)
           (popup/wrap-container)
-          (wrap-ui default/components)]}
+          (wrap-ui default/components)
+          (window/wrap-window-provider)]}
   []
-  (provider
-   {:context md.context/show
-    :value {:className ui.css/$md
-            :on-theme-change showcase.theme/change-highligh-js}}
-   ($ dev/playground
-      {:max-width 1000
-       :components routes}))
+  (let [mobile? (toddler/use-window-width-test < 1000)]
+    (provider
+     {:context app/locale
+      :value :en}
+     (provider
+      {:context app/layout
+       :value (if mobile? :mobile :desktop)}
+      ($ docs/page
+         {:max-width 1000
+          :components routes}))))
   ;; TODO - Strict mode causes problems with popup window
   #_($ react/StrictMode
        ($ router/Provider

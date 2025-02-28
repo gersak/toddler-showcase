@@ -12,9 +12,6 @@
    [toddler.router :as router]
    [toddler.layout :as layout]))
 
-(add-translations
- #:showcase.routing {:default "Routing"})
-
 (defnc ModalTest
   {:wrap [(router/wrap-rendered ::modal)]}
   []

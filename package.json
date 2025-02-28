@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx shadow-cljs -A:shadow watch dev",
-    "release": "clj -X:shadow:css && npx shadow-cljs -A:shadow release github"
+    "release": "clj -X:shadow:css && npx shadow-cljs -A:shadow release github",
+    "release-tauri": "clj -X:shadow:showcase:css && npx shadow-cljs -A:shadow:showcase release tauri"
   },
   "author": "Robert Gersak",
   "license": "ISC",
