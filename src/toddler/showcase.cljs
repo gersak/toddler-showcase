@@ -23,6 +23,7 @@
    [toddler.showcase.modal :refer [Modal]]
    [toddler.showcase.notifications :refer [Notifications]]
    [toddler.showcase.rationale :refer [Rationale]]
+   [toddler.showcase.camera :refer [Camera]]
    [toddler.showcase.theme :as showcase.theme]
    [toddler.router :as router]
    [toddler.ui.css :as ui.css]
@@ -89,7 +90,11 @@
    {:id :toddler.icons
     :name "Icons"
     :render Icons
-    :segment "icons"}])
+    :segment "icons"}
+   {:id :toddler.camera
+    :name "Camera"
+    :render Camera
+    :segment "camera"}])
 
 (defnc Showcase
   {:wrap [(router/wrap-link ::router/ROOT routes)
