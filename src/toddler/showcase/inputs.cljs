@@ -3,7 +3,7 @@
    [helix.core :refer [$ defnc <>]]
    [helix.hooks :as hooks]
    [shadow.css :refer [css]]
-   [toddler.ui :as ui :refer [!]]
+   [toddler.ui :as ui]
    [toddler.core :as toddler]
    [toddler.md.lazy :as md]
    [toddler.layout :as layout]
@@ -11,13 +11,13 @@
 
 (defnc buttons
   []
-  (! :row
+  ($ ui/row
      {:align :center
       :class [(css :flex-wrap) "example-field"]}
-     (! :button "Default")
-     (! :button {:class "positive"} "Positive")
-     (! :button {:class "negative"} "Negative")
-     (! :button {:disabled true} "Disabled")))
+     ($ ui/button "Default")
+     ($ ui/button {:class "positive"} "Positive")
+     ($ ui/button {:class "negative"} "Negative")
+     ($ ui/button {:disabled true} "Disabled")))
 
 (defnc value-fields
   []
@@ -30,39 +30,39 @@
           :float-field 2.123543123123
           :textarea-field "I am text. Try ENTER"})]
     (<>
-     (! :row
+     ($ ui/row
         {:className "example-field"}
-        (! :field/input
+        ($ ui/input-field
            {:name "Input Field"
             :value (:free-input state)
             :onChange (fn [v] (set-state! assoc :free-input v))}))
-     (! :row
+     ($ ui/row
         {:className "example-field"}
-        (! :field/text
+        ($ ui/text-field
            {:name "Text Field"
             :value (:textarea-field state)
             :onChange (fn [v] (set-state! assoc :textarea-field v))}))
-     (! :row
+     ($ ui/row
         {:className "example-field"}
-        (! :field/password
+        ($ ui/password-field
            {:name "Password Field"
             :value (:password state)
             :onChange (fn [v] (set-state! assoc :password v))}))
-     (! :row
+     ($ ui/row
         {:className "example-field"}
-        (! :field/boolean
+        ($ ui/boolean-field
            {:name "Boolean Field"
             :value (:boolean-field state)
             :onChange (fn [] (set-state! update :boolean-field not))}))
-     (! :row
+     ($ ui/row
         {:className "example-field"}
-        (! :field/integer
+        ($ ui/integer-field
            {:name "Integer Field"
             :value (:integer-field state)
             :onChange (fn [v] (set-state! assoc :integer-field v))}))
-     (! :row
+     ($ ui/row
         {:className "example-field"}
-        (! :field/float
+        ($ ui/float-field
            {:name "Float Field"
             :value (:float-field state)
             :onChange (fn [v] (set-state! assoc :float-field v))})))))
@@ -80,18 +80,18 @@
   []
   (let [[state set-state!] (hooks/use-state {:multiselect-field []})]
     (<>
-     (! :row
+     ($ ui/row
         {:className "example-field"}
-        (! :field/dropdown
+        ($ ui/dropdown-field
            {:name "dropdown"
             :value (:dropdown-field state)
             :search-fn :name
             :context-fn :context
             :options test-options
             :onChange (fn [v] (set-state! assoc :dropdown-field v))}))
-     (! :row
+     ($ ui/row
         {:className "example-field"}
-        (! :field/multiselect
+        ($ ui/multiselect-field
            {:name "Multiselect Field"
             :value (:multiselect-field state)
             :placeholder "Choose.."
@@ -100,9 +100,9 @@
             :options test-options
             :onRemove (fn [v] (set-state! assoc :multiselect-field v))
             :onChange (fn [v] (set-state! assoc :multiselect-field v))}))
-     (! :row
+     ($ ui/row
         {:className "example-field"}
-        (! :field/identity
+        ($ ui/identity-field
            {:name "Identity Field"
             :value (:identity-field state)
             :placeholder "Choose..."
@@ -110,9 +110,9 @@
                       {:name "Harry"}
                       {:name "Ivan"}]
             :onChange (fn [v] (set-state! assoc :identity-field v))}))
-     (! :row
+     ($ ui/row
         {:className "example-field"}
-        (! :field/identity-multiselect
+        ($ ui/identity-multiselect-field
            {:name "Identity Multiselect"
             :value (:identity-multiselect-field state)
             :placeholder "Select..."
@@ -129,27 +129,27 @@
   []
   (let [[state set-state!] (hooks/use-state nil)]
     (<>
-     (! :row
+     ($ ui/row
         {:className "example-field"}
-        (! :field/date
+        ($ ui/date-field
            {:name "Date Field"
             :value (:date-field state)
             :onChange #(set-state! assoc :date-field %)}))
-     (! :row
+     ($ ui/row
         {:className "example-field"}
-        (! :field/timestamp
+        ($ ui/timestamp-field
            {:name "Timestamp Field"
             :value (:timestamp-field state)
             :onChange #(set-state! assoc :timestamp-field %)}))
-     (! :row
+     ($ ui/row
         {:className "example-field"}
-        (! :field/date-period
+        ($ ui/date-period-field
            {:name "Date Period Field"
             :value (:date-period-field state)
             :onChange (fn [v] (set-state! assoc :date-period-field v))}))
-     (! :row
+     ($ ui/row
         {:className "example-field"}
-        (! :field/timestamp-period
+        ($ ui/timestamp-period-field
            {:name "Timestamp Period Field"
             :value (:timestamp-period-field state)
             :onChange (fn [v] (set-state! assoc :timestamp-period-field v))})))))
@@ -158,11 +158,11 @@
   {:wrap [(router/wrap-rendered :toddler.inputs)]}
   []
   (let [{:keys [height width]} (layout/use-container-dimensions)]
-    (! :simplebar
+    ($ ui/simplebar
        {:style {:height height
                 :width width}}
-       (! :row {:align :center}
-          (! :column
+       ($ ui/row {:align :center}
+          ($ ui/column
              {:align :center
               :style {:max-width (min width 600)}
               :className (css

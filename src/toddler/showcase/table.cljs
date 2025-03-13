@@ -118,51 +118,21 @@
 
 (def data (generate-table 50))
 
-(defn reducer
+(defmethod table/reducer :table.element/change
   [{:keys [data] :as state}
     ;;
-   {:keys [type idx value]
-    {:keys [cursor]
-     cidx :idx} :column}]
-  (letfn [(apply-filters
-            [{:keys [rows columns] :as state}]
-            (if-some [filters (not-empty
-                               (keep
-                                (fn [{f :filter c :cursor}]
-                                  (when f
-                                    (case c
-                                      :timestamp
-                                      (let [[from to] f]
-                                        (fn [{t :timestamp}]
-                                          (cond
-                                            (every? some? [from to]) (<= from t to)
-                                            (some? from) (<= from t)
-                                            (some? to) (<= t to))))
-                                      :enum (comp f :enum)
-                                      (constantly true))))
-                                columns))]
-              (assoc state :data (filter (apply every-pred filters) rows))
-              (assoc state :data rows)))]
-    (let [cursor' (if (sequential? cursor) cursor
-                      [cursor])]
-      (->
-       (case type
-         :table.element/change
-         (assoc-in state (into [:rows (:idx (nth data idx))] cursor') value)
-         :table.column/filter
-         (assoc-in state [:columns cidx :filter] value)
-
-         state)
-            ;;
-       apply-filters))))
+   {:keys [idx value]
+    {:keys [cursor]} :column}]
+  (let [cursor' (if (sequential? cursor) cursor
+                    [cursor])]
+    (assoc-in state (into [:rows idx] cursor') value)))
 
 (defnc table-example
   []
   (let [{:keys [width height]} (layout/use-container-dimensions)
-        [{:keys [data columns]} dispatch] (hooks/use-reducer
-                                           reducer
+        [{:keys [rows columns]} dispatch] (hooks/use-reducer
+                                           table/reducer
                                            {:rows data
-                                            :data data
                                             :columns columns})]
     ($ ui/row
        {:align :center}
@@ -171,7 +141,7 @@
          :value {:width (min 600 (- width 40))
                  :height 500}}
         (! :table
-           {:rows data
+           {:rows rows
             :columns columns
             :dispatch dispatch})))))
 
@@ -268,7 +238,7 @@
                               {:keys [cursor]} :column}]
                           (case type
                             :table.element/change (set-state! assoc-in (concat [idx] cursor) value)
-                            (.error js/console "Unkown event: " (pr-str evt))))
+                            (.warn js/console "Unkown event: " (pr-str evt))))
               :rows state})))))
 
 ;; TODO - include this examples as well

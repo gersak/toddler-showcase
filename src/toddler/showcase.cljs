@@ -3,6 +3,7 @@
   (:require
    ["react" :as react]
    [taoensso.telemere :as t]
+   [clojure.core.async :as async]
    [toddler.app :as app]
    [toddler.docs :as docs]
    [toddler.core :as toddler]
@@ -12,6 +13,7 @@
    [toddler.notifications :as notifications]
    [toddler.popup :as popup]
    [helix.core :refer [$ defnc provider]]
+   [helix.hooks :as hooks]
    [toddler.showcase.layout :refer [Layout]]
    [toddler.showcase.inputs :refer [Inputs]]
    [toddler.showcase.table :refer [Table TableGrid]]
@@ -28,6 +30,7 @@
    [toddler.router :as router]
    [toddler.ui.css :as ui.css]
    [toddler.md.lazy :as md]
+   [toddler.search :as search]
    toddler.i18n.number
    toddler.i18n.time
    toddler.i18n
@@ -99,12 +102,13 @@
 (defnc Showcase
   {:wrap [(router/wrap-link ::router/ROOT routes)
           (toddler/wrap-theme ::theme)
+          (search/wrap-index "/docs.index.edn")
           (md/wrap-show {:className ui.css/$md
                          :on-theme-change showcase.theme/change-highligh-js})
           (notifications/wrap-store {:class ui.css/$store})
           (router/wrap-landing "/" false)
           (popup/wrap-container)
-          (wrap-ui default/components)
+          (wrap-ui (assoc default/components :markdown md/show))
           (window/wrap-window-provider)]}
   []
   (let [mobile? (toddler/use-window-width-test < 1000)]
