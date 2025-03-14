@@ -26,6 +26,7 @@
    [toddler.showcase.notifications :refer [Notifications]]
    [toddler.showcase.rationale :refer [Rationale]]
    [toddler.showcase.camera :refer [Camera]]
+   [toddler.showcase.lazy :refer [Lazy]]
    [toddler.showcase.theme :as showcase.theme]
    [toddler.router :as router]
    [toddler.ui.css :as ui.css]
@@ -97,7 +98,11 @@
    {:id :toddler.camera
     :name "Camera"
     :render Camera
-    :segment "camera"}])
+    :segment "camera"}
+   {:id :toddler.lazy
+    :name "Lazy"
+    :render Lazy
+    :segment "lazy"}])
 
 (defnc Showcase
   {:wrap [(router/wrap-link ::router/ROOT routes)
