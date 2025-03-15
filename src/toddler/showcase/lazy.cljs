@@ -6,13 +6,14 @@
    [helix.hooks :as hooks]
    [shadow.css :refer [css]]
    [toddler.ui :as ui]
+   [toddler.layout :as layout]
    [toddler.md.context :as md.context]
    [toddler.core :as toddler]
    [toddler.router :as router]
+   [toddler.md.lazy :as md]
    [toddler.chart-js.lazy :refer [Chart]]))
 
-(defnc Lazy
-  {:wrap [(router/wrap-rendered :toddler.lazy)]}
+(defnc example
   []
   (let [[data set-data!] (hooks/use-state nil)
         [chart set-chart!] (hooks/use-state nil)
@@ -31,7 +32,7 @@
                   :label "Median Age [years] "}]
         [topic set-topic!]  (hooks/use-state (nth options 0))
         window-width (toddler/use-window-width)
-        width (min 400 window-width)]
+        width (min 600 (- window-width 40))]
     (hooks/use-effect
       :once
       []
@@ -42,10 +43,11 @@
       [data topic]
       (let [{:keys [pred label]} topic
             data (remove (comp nil? :country) data)
-            data (take 10 (sort-by pred > data))
+            ; data (take 10 (sort-by pred > data))
+            data (sort-by :country  data)
             countries (map :country data)]
         (set-chart!
-         {:type "pie"
+         {:type "bar"
           :options {:plugins {:legend {:display false}}}
           :data
           {:labels countries
@@ -54,7 +56,7 @@
     (<>
      ($ ui/row
         {:align :center
-         :className (css :py-4)}
+         :className (css :pt-10 :pb-4)}
         ($ ui/dropdown-field
            {:search-fn :name
             :value topic
@@ -66,3 +68,39 @@
         ($ ui/row
            {:style {:max-width width}}
            ($ Chart {:config chart}))))))
+
+(defnc doc
+  []
+  (let [{:keys [height width]} (layout/use-container-dimensions)]
+    ($ ui/simplebar
+       {:style {:height height
+                :width width}}
+       ($ ui/row {:align :center}
+          ($ ui/column
+             {:align :center
+              :style {:max-width (min width 600)}
+              :className (css
+                          ["& .example-field" :my-5])}
+             ($ md/watch-url {:url "/lazy.md"})
+             ($ toddler/portal
+                {:locator #(.getElementById js/document "chart-example")}
+                ($ example)))))))
+
+(defnc Lazy
+  {:wrap [(router/wrap-rendered :toddler.lazy)
+          (router/wrap-link
+           :toddler.lazy
+           [{:id ::js
+             :name "I like JS"
+             :segment "js"
+             :hash "i-like-js"}
+            {:id ::code-splitting
+             :name "Code Splitting"
+             :segment "code-splitting"
+             :hash "code-splitting"}
+            {:id ::loading
+             :name "Loading"
+             :segment "loading"
+             :hash "loading"}])]}
+  []
+  ($ doc))

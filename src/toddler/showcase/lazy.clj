@@ -126,7 +126,6 @@
   []
   (mapv
    (fn [file]
-     (println "FILE IS: " file)
      (zipmap
       [:country :population :alchocol-use :median-age :gross-production-rate
        :tobacco-use :fertility-rate]
@@ -138,5 +137,6 @@
 (comment
   (def file "ax.json")
   (county stats)
+  (spit "showcase/docs/data/country_stats.edn" (make-statistics))
   (get-in stats ["People and Society"])
   (def stats (read-stats (first files))))
