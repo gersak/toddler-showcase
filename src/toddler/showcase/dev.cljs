@@ -4,7 +4,7 @@
   (:require
    ["react-dom/client" :refer [createRoot]]
    [helix.core :refer [$ defnc provider]]
-   [taoensso.telemere :as t]
+   ; [taoensso.telemere :as t]
    [toddler.router :as router]
    [toddler.showcase :refer [Showcase]]
    [toddler.md.context :as md.context]))

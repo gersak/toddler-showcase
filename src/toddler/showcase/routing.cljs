@@ -96,63 +96,72 @@
    {:className (css :p-4 :my-3 :rounded-xl :text-lg :font-semibold :bg-positive)}
    "This data is only available to route SUPERUSER!!!"))
 
-(defnc RouteProtection
+(defnc ProtectedRoutes
   {:wrap [(router/wrap-link
            ::protection
            [{:id ::everyone}
             {:id ::admin
              :roles #{"admin"}}
             {:id ::superuser}])]}
+  [{:keys [roles on-role-change]}]
+  (<>
+   ($ public-route)
+   ($ admin-route)
+   ($ super-route)
+   ($ ui/row
+      ($ ui/multiselect-field
+         {:name "USER ROLES"
+          :options ["admin" "superuser"]
+          :value roles
+          :on-change on-role-change}))))
+
+(defnc RouteProtection
   []
   (let [[{:keys [roles]} set-user!] (hooks/use-state nil)]
     ($ router/Protect
        {:roles (set roles)
         :super "superuser"}
-       (<>
-        ($ public-route)
-        ($ admin-route)
-        ($ super-route)
-        (! :row
-           (! :field/multiselect
-              {:name "USER ROLES"
-               :options ["admin" "superuser"]
-               :value roles
-               :on-change #(set-user! assoc :roles %)}))))))
+       ($ ProtectedRoutes
+          {:roles roles
+           :on-role-change #(set-user! assoc :roles %)}))))
 
-(defnc App []
-  (let []
-    ($ router/Provider
-       {:base "routing"}
-       ($ Root))))
-
-(defnc MyApp
-  []
-  ($ router/Provider
-     ($ router/LandingPage
-        {:url "/landing"}
-        ($ Root))))
+; (defnc App []
+;   (let []
+;     ($ router/Provider
+;        {:base "routing"}
+;        ($ Root))))
+;
+; (defnc MyApp
+;   []
+;   ($ router/Provider
+;      ($ router/LandingPage
+;         {:url "/landing"}
+;         ($ Root))))
 
 (defnc doc
   {:wrap [(router/wrap-rendered :toddler.routing)]}
   []
   (let [{:keys [height width]} (layout/use-container-dimensions)
-        base (hooks/use-context router/-base-)]
+        base (hooks/use-context router/-base-)
+        showcase-base (hooks/use-memo
+                        :once
+                        (str (when base (str base "/")) "routing"))]
     ($ router/Provider
-       {:base (str (when base (str base "/")) "routing")}
-       (! :simplebar
+       {:base showcase-base}
+       ($ ui/simplebar
           {:style {:height height
                    :width width}
            :shadow true}
-          (! :row {:align :center}
-             (! :column {:align :center
-                         :style {:max-width (min 640 (- width 40))}}
+          ($ ui/row {:align :center}
+             ($ ui/column {:align :center
+                           :style {:max-width (min 640 (- width 40))}}
                 ($ md/watch-url {:url "/routing.md"})
                 ($ toddler/portal
                    {:locator #(.getElementById js/document "router-basics")}
                    ($ Root))
                 ($ toddler/portal
                    {:locator #(.getElementById js/document "route-protection-example")}
-                   ($ RouteProtection))))))))
+                   ($ RouteProtection {:keys ::protected}))))))))
 
 (defnc Routing
   {:wrap [(router/wrap-link

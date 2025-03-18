@@ -6,6 +6,7 @@
    [toddler.ui :as ui]
    [toddler.core :as toddler]
    [toddler.md.lazy :as md]
+   ; [toddler.md :as md]
    [toddler.layout :as layout]
    [toddler.router :as router]))
 

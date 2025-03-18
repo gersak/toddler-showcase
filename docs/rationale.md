@@ -106,16 +106,16 @@ With **Toddler**, components become placeholders, and **UI customization becomes
 <div id="components-example"></div>
 
 
-Toddler provides declared components in the `toddler.ui` namespace. It is recommended to keep  
-all components within a single namespace to minimize complexity.  
+Toddler provides declared components in the `toddler.ui` namespace. It is recommended to keep
+all components within a single namespace to minimize complexity.
 
-The default implementations of Toddler components can be found in the following namespaces:  
-`toddler.ui.elements`, `toddler.ui.fields`, `toddler.ui.tables`, and other `toddler.ui.*` namespaces.  
+The default implementations of Toddler components can be found in the following namespaces:
+`toddler.ui.elements`, `toddler.ui.fields`, `toddler.ui.tables`, and other `toddler.ui.*` namespaces.
 
-All implemented components are then grouped together in the `toddler.ui.components` namespace.  
-This simplifies passing components as values to the `toddler.ui/__components__` context.  
+All implemented components are then grouped together in the `toddler.ui.components` namespace.
+This simplifies passing components as values to the `toddler.ui/__components__` context.
 
-Default components are packaged separately from **toddler.core**. You can find the JAR on Clojars:  
+Default components are packaged separately from **toddler.core**. You can find the JAR on Clojars:
 [dev.gersak/toddler-ui](https://clojars.org/dev.gersak/toddler-ui).  
 
 ```clojure

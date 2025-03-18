@@ -4,7 +4,7 @@
   (:require
    ["react-dom/client" :refer [createRoot]]
    [helix.core :refer [$ defnc provider]]
-   [taoensso.telemere :as t]
+   ; [taoensso.telemere :as t]
    [toddler.router :as router]
    [toddler.showcase :refer [Showcase]]
    [toddler.md.context :as md.context]))
@@ -22,7 +22,10 @@
       (provider
        {:context md.context/base
         :value "https://raw.githubusercontent.com/gersak/toddler-showcase/refs/heads/main/docs"}
-       ($ Showcase)))))
+       (provider
+        {:context search.context/base
+         :value "https://raw.githubusercontent.com/gersak/toddler-showcase/refs/heads/main/docs"}
+        ($ Showcase))))))
 
 (defn ^:dev/after-load start! []
   (let [target ^js (.getElementById js/document "app")]

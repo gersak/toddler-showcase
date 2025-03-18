@@ -10,8 +10,11 @@
    [toddler.md.context :as md.context]
    [toddler.core :as toddler]
    [toddler.router :as router]
+   [toddler.lazy :as lazy]
    [toddler.md.lazy :as md]
-   [toddler.chart-js.lazy :refer [Chart]]))
+   [toddler.chart-js.lazy :refer [Chart]]
+   #_[toddler.showcase.three :as three]
+   [toddler.showcase.three.lazy :as three]))
 
 (defnc example
   []
@@ -81,6 +84,7 @@
               :style {:max-width (min width 600)}
               :className (css
                           ["& .example-field" :my-5])}
+             ($ three/Basic)
              ($ md/watch-url {:url "/lazy.md"})
              ($ toddler/portal
                 {:locator #(.getElementById js/document "chart-example")}

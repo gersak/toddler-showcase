@@ -2,7 +2,7 @@
   {:shadow.css/include ["css/toddler.css"]}
   (:require
    ["react" :as react]
-   [taoensso.telemere :as t]
+   ; [taoensso.telemere :as t]
    [clojure.core.async :as async]
    [toddler.app :as app]
    [toddler.docs :as docs]
@@ -95,12 +95,12 @@
     :name "Icons"
     :render Icons
     :segment "icons"}
-   {:id :toddler.camera
-    :name "Camera"
-    :render Camera
-    :segment "camera"}
+   #_{:id :toddler.camera
+      :name "Camera"
+      :render Camera
+      :segment "camera"}
    {:id :toddler.lazy
-    :name "Lazy"
+    :name "Lazy JS"
     :render Lazy
     :segment "lazy"}])
 

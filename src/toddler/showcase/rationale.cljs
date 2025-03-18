@@ -100,36 +100,39 @@
   [{:keys [src text]}]
   (let [{window-width :width} (toddler/use-window-dimensions)
         mobile? (< window-width 800)]
-    (d/div
-     {:class ["feature"
-              (css
-               :flex-grow
-               :mx-4
-               :ml-6
-               :mb-2
-               :mt-6
-               :p-4
-               :border :rounded-lg :border-normal+ :bg-normal+
-               {:grow "1"})]}
-     (if mobile?
-       ($ ui/column
-          ($ ui/row
-             {:align :center
-              :className (css :mt-4)}
-             ($ md/img
-                {:src src
-                 :style {:width "170px"}}))
-          ($ ui/row
-             {:style {:max-width window-width}}
-             ($ md/show
-                {:content text})))
-       ($ ui/row
-          ($ md/img
-             {:src src
-              :style {:width "170px"
-                      :padding-right "24px"}})
-          ($ md/show
-             {:content text}))))))
+    (when text
+      (d/div
+       {:class ["feature"
+                "fade-in"
+                ; {:animation "fade-in 1s ease-in-out forwards"}
+                (css
+                 :flex-grow
+                 :mx-4
+                 :ml-6
+                 :mb-2
+                 :mt-6
+                 :p-4
+                 :border :rounded-lg :border-normal+ :bg-normal+
+                 {:grow "1"})]}
+       (if mobile?
+         ($ ui/column
+            ($ ui/row
+               {:align :center
+                :className (css :mt-4)}
+               ($ md/img
+                  {:src src
+                   :style {:width "170px"}}))
+            ($ ui/row
+               {:style {:max-width window-width}}
+               ($ md/show
+                  {:content text})))
+         ($ ui/row
+            ($ md/img
+               {:src src
+                :style {:width "170px"
+                        :padding-right "24px"}})
+            ($ md/show
+               {:content text})))))))
 
 (defnc Rationale
   {:wrap [(router/wrap-link
