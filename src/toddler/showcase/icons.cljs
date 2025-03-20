@@ -43,9 +43,8 @@
                       :onClick (fn [] (.writeText js/navigator.clipboard name))}))))
        icons))))
 
-(defnc Icons
+(defnc Showcase
   []
-  {:wrap [(router/wrap-rendered :toddler.icons)]}
   (let [{:keys [height]} (layout/use-container-dimensions)
         [message {message-height :height}] (toddler/use-dimensions)
         {window-width :width} (toddler/use-window-dimensions)
@@ -120,3 +119,8 @@
            {:id ::ionic
             :name "Ionic"}
            ($ display-icons {:height height :icons ionic/icons}))))))
+
+(defnc Icons
+  []
+  {:wrap [(router/wrap-rendered :toddler.icons)]}
+  ($ Showcase))

@@ -2,13 +2,16 @@
   {:shadow.css/include ["css/toddler.css"]}
   (:require
    ["react" :as react]
+   ["react-dom/client" :refer [createRoot]]
    ; [taoensso.telemere :as t]
+   [shadow.lazy :as lazy]
+   [shadow.cljs.modern :refer [js-await]]
    [clojure.core.async :as async]
    [toddler.app :as app]
    [toddler.docs :as docs]
    [toddler.core :as toddler]
-   [toddler.ui :refer [wrap-ui]]
-   [toddler.ui.components :as default]
+   [toddler.ui :as ui]
+   ; [toddler.ui.components :as default]
    [toddler.window :as window]
    [toddler.notifications :as notifications]
    [toddler.popup :as popup]
@@ -21,7 +24,7 @@
    [toddler.showcase.popup :refer [Popup]]
    [toddler.showcase.i18n :refer [i18n]]
    [toddler.showcase.routing :refer [Routing]]
-   [toddler.showcase.icons :refer [Icons]]
+   [toddler.showcase.icons.lazy :refer [Icons]]
    [toddler.showcase.modal :refer [Modal]]
    [toddler.showcase.notifications :refer [Notifications]]
    [toddler.showcase.rationale :refer [Rationale]]
@@ -104,29 +107,62 @@
     :render Lazy
     :segment "lazy"}])
 
+(def ui-components
+  (lazy/loadable toddler.ui.components/components))
+
+(goog-define MD_BASE "")
+(goog-define MD_REFRESH_PERIOD 3000)
+(goog-define ROUTER_BASE "")
+(goog-define SEARCH_INDEX "/docs.index.ednkitalabudova")
+
 (defnc Showcase
   {:wrap [(router/wrap-link ::router/ROOT routes)
+          (router/wrap-landing "/" false)
           (toddler/wrap-theme ::theme)
-          (search/wrap-index "/docs.index.edn")
+          (search/wrap-index SEARCH_INDEX)
           (md/wrap-show {:className ui.css/$md
                          :on-theme-change showcase.theme/change-highligh-js})
+          (md/wrap-base MD_BASE)
+          (md/wrap-refresh MD_REFRESH_PERIOD)
           (notifications/wrap-store {:class ui.css/$store})
-          (router/wrap-landing "/" false)
           (popup/wrap-container)
-          (wrap-ui (assoc default/components :markdown md/show))
+          ; (wrap-ui (assoc default/components :markdown md/show))
+          (router/wrap-router ROUTER_BASE)
           (window/wrap-window-provider)]}
   []
-  (let [mobile? (toddler/use-window-width-test < 1000)]
-    (provider
-     {:context app/locale
-      :value :en}
-     (provider
-      {:context app/layout
-       :value (if mobile? :mobile :desktop)}
-      ($ docs/page
-         {:max-width 1000
-          :components routes}))))
+  (let [mobile? (toddler/use-window-width-test < 1000)
+        [components set-components!] (helix.hooks/use-state nil)]
+    (helix.hooks/use-effect
+      :once
+      (js-await
+       [c (lazy/load ui-components)]
+       (set-components! c)))
+    (toddler/use-mouse-tracker)
+    ($ ui/UI
+       {:components (assoc components :markdown md/show)}
+       (provider
+        {:context app/locale
+         :value :en}
+        (provider
+         {:context app/layout
+          :value (if mobile? :mobile :desktop)}
+         ($ docs/page
+            {:max-width 1000
+             :components routes})))))
   ;; TODO - Strict mode causes problems with popup window
   #_($ react/StrictMode
        ($ router/Provider
           ($ dev/playground {:components routes}))))
+
+(defonce root (atom nil))
+
+(defn start! []
+  (.log js/console "Starting Toddler showcase development!")
+  ; (t/set-min-level! :debug)
+  ; (t/set-min-level! :log "toddler.md" :debug)
+  ; (t/set-min-level! :log "toddler.routing" :debug)
+  (let [target ^js (.getElementById js/document "app")]
+    (when-not @root
+      (.log js/console "Rendering playground")
+      (reset! root ^js (createRoot target)))
+    (.render ^js @root ($ Showcase))))

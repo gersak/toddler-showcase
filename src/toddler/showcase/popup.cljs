@@ -121,7 +121,6 @@
              :hash "tooltip"}])]}
   []
   (let [{:keys [height width]} (layout/use-container-dimensions)]
-    (println "WIDT: " width)
     ($ ui/simplebar
        {:style {:height height
                 :width width}
