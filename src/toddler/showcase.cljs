@@ -113,7 +113,7 @@
 (goog-define MD_BASE "")
 (goog-define MD_REFRESH_PERIOD 3000)
 (goog-define ROUTER_BASE "")
-(goog-define SEARCH_INDEX "/docs.index.ednkitalabudova")
+(goog-define SEARCH_INDEX "/docs.index.edn")
 
 (defnc Showcase
   {:wrap [(router/wrap-link ::router/ROOT routes)
