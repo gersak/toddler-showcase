@@ -3,22 +3,12 @@
    [helix.core :refer [defnc $]]
    [helix.hooks :as hooks]
    [toddler.router :as router]
-   [shadow.lazy :as lazy]
-   [shadow.cljs.modern :refer [js-await]]))
+   [toddler.lazy :as lazy]))
 
-(def showcase (lazy/loadable toddler.showcase.icons/Showcase))
-
-(def icons (atom nil))
+(lazy/load-components
+ ::Showcase toddler.showcase.icons/Showcase)
 
 (defnc Icons
-  []
   {:wrap [(router/wrap-rendered :toddler.icons)]}
-  (let [[loaded? loaded!] (hooks/use-state nil)]
-    (hooks/use-effect
-      :once
-      (when-not @icons
-        (js-await [_icons (lazy/load showcase)]
-                  (reset! icons _icons)
-                  (loaded! true))))
-    (when (or @icons loaded?)
-      ($ @icons))))
+  []
+  ($ Showcase))

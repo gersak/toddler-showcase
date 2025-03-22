@@ -2,7 +2,9 @@
   (:require
    [helix.core :refer [$ defnc]]
    [helix.hooks :as hooks]
+   [helix.dom :as d]
    [toddler.ui :as ui]
+   [shadow.css :refer [css]]
    ["@react-three/fiber" :as fiber]
    ["@react-three/drei" :as drei]))
 
@@ -28,15 +30,20 @@
        ($ :meshStandardMaterial {:color (if hovered? "hotpink" "red")}))))
 
 (defnc Basic
-  {:wrap [(ui/forward-ref)]}
   []
-  ($ fiber/Canvas
-     {:style #js {:height 400}}
-     ($ :ambientLight {:intensity (/ js/Math.PI 2)})
-     ($ :spotLight {:position #js [10 10 10] :angle 0.15
-                    :penumbra 1 :decay 0
-                    :intensity js/Math.PI})
-     ($ :pointLight {:position #js [-10 -10 -10] :decay 0 :intensity js/Math.PI})
-     ($ ThreeBox {:position #js [-1.2 0 0]})
-     ($ ThreeBox {:position #js [1.2 0 0]})
-     ($ drei/OrbitControls)))
+  (d/div
+   {:className (css
+                :mt-10
+                :mb-10
+                :bg-normal+
+                :border :border-normal :rounded-lg)}
+   ($ fiber/Canvas
+      {:style #js {:height 400}}
+      ($ :ambientLight {:intensity (/ js/Math.PI 2)})
+      ($ :spotLight {:position #js [10 10 10] :angle 0.15
+                     :penumbra 1 :decay 0
+                     :intensity js/Math.PI})
+      ($ :pointLight {:position #js [-10 -10 -10] :decay 0 :intensity js/Math.PI})
+      ($ ThreeBox {:position #js [-1.2 0 0]})
+      ($ ThreeBox {:position #js [1.2 0 0]})
+      ($ drei/OrbitControls))))

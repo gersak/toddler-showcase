@@ -43,6 +43,11 @@
                       :onClick (fn [] (.writeText js/navigator.clipboard name))}))))
        icons))))
 
+(comment
+
+  (.log js/console toddler.showcase.icons/Showcase)
+  (.log js/console (meta Showcase)))
+
 (defnc Showcase
   []
   (let [{:keys [height]} (layout/use-container-dimensions)
@@ -72,6 +77,11 @@
                    ["& p" :my-1])}
       (d/p "Toddler generates helix components by cloning target icons repo and than processing source code. Why?")
       (d/p "Because of " (d/b "advanced compilation") " and dead code elimination of Closure compiler.")
+      (d/p "You can use icons bellow by including "
+           (d/code
+            {:className (css :px-2 :py-1 :bg-normal- :rounded-sm :text-xxs)}
+            "dev.gersak/toddler-icons {:mvn/version \"1.0.0\"}")
+           " in your build.")
       (d/div
        {:className (css :absolute ["& svg" :cursor-pointer {:font-size "24px"}])
         :style {:top 3 :right 10}}
@@ -121,6 +131,11 @@
            ($ display-icons {:height height :icons ionic/icons}))))))
 
 (defnc Icons
-  []
   {:wrap [(router/wrap-rendered :toddler.icons)]}
+  []
   ($ Showcase))
+
+(comment
+  (.log js/console Showcase)
+  (type Showcase)
+  (fn? Showcase))

@@ -425,7 +425,6 @@ html[data-theme="light"] {
   /* Background */
   --background: #f0f0f0;
   --background-p1: #f5f6f8;
-  --background-p2: #fbfbfb;
   --background-m1: #cccccc;
   --background-neutral: #f0f0f0;
   --background-positive: #e8f8f1;
@@ -590,7 +589,6 @@ html[data-theme="dark"] {
   /* Background */
   --background: #262626;
   --background-p1: #202020;
-  --background-p2: #000000;
   --background-m1: #474747;
   --background-neutral: #262626;
   --background-positive: #253d33;
@@ -2811,6 +2809,14 @@ html[data-theme="light"] hr {
   margin-top: 0.75rem;
   padding: 1rem;
 }
+.toddler_showcase_three__L35_C16 {
+  background: var(--background-p1);
+  border-color: var(--border-normal);
+  border-radius: 0.5rem;
+  border-width: 1px;
+  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+}
 .toddler_showcase_camera__L79_C29 {
   border-color: var(--border-normal);
   border-radius: 0.375rem;
@@ -3498,7 +3504,7 @@ html[data-theme="light"] hr {
 .toddler_docs__L265_C20 .breadcrumb svg {
   font-size: 14px;
 }
-.toddler_docs__L318_C20 {
+.toddler_docs__L324_C20 {
   align-self: flex-start;
   background: var(--background-p2);
   border-color: var(--border-normal);
@@ -3506,22 +3512,22 @@ html[data-theme="light"] hr {
   border-width: 1px;
   box-sizing: border-box;
 }
-.toddler_docs__L318_C20 .search-bar {
+.toddler_docs__L324_C20 .search-bar {
   border-bottom-width: 1px;
   border-color: var(--border-normal);
   padding-left: 1rem;
   padding-right: 1rem;
 }
-.toddler_docs__L318_C20 input {
+.toddler_docs__L324_C20 input {
   flex: 1 0 auto;
   font-size: 1rem;
   line-height: 1.5rem;
 }
-.toddler_docs__L318_C20 .icon {
+.toddler_docs__L324_C20 .icon {
   font-size: 24px;
   margin-right: 0.5rem;
 }
-.toddler_docs__L366_C19 {
+.toddler_docs__L372_C19 {
   align-items: center;
   border-color: var(--border-normal);
   border-radius: 0.375rem;
@@ -3538,18 +3544,18 @@ html[data-theme="light"] hr {
   padding-top: 0.25rem;
   transition: color .4s ease-in-out, border .4s ease-in-out;
 }
-.toddler_docs__L366_C19 .icon {
+.toddler_docs__L372_C19 .icon {
   align-items: center;
   display: flex;
   font-size: 20px;
   justify-content: center;
   margin-right: 0.25rem;
 }
-.toddler_docs__L366_C19:hover {
+.toddler_docs__L372_C19:hover {
   border-color: var(--border-normal-p1);
   color: var(--color-p1);
 }
-.toddler_docs__L411_C23 {
+.toddler_docs__L417_C23 {
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.5rem;
@@ -3624,11 +3630,11 @@ html[data-theme="light"] hr {
   font-size: 10px;
   font-weight: 600;
 }
-.toddler_showcase_icons__L60_C18 {
+.toddler_showcase_icons__L65_C18 {
   display: flex;
   flex-direction: column;
 }
-.toddler_showcase_icons__L63_C19 {
+.toddler_showcase_icons__L68_C19 {
   display: flex;
   flex-direction: column;
   font-size: 0.76rem;
@@ -3639,14 +3645,24 @@ html[data-theme="light"] hr {
   padding-right: 2.5rem;
   position: relative;
 }
-.toddler_showcase_icons__L63_C19 p {
+.toddler_showcase_icons__L68_C19 p {
   margin-bottom: 0.25rem;
   margin-top: 0.25rem;
 }
-.toddler_showcase_icons__L76_C20 {
+.toddler_showcase_icons__L82_C25 {
+  background: var(--background-m1);
+  border-radius: 0.125rem;
+  font-size: 0.6875rem;
+  line-height: 1.125rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+}
+.toddler_showcase_icons__L86_C20 {
   position: absolute;
 }
-.toddler_showcase_icons__L76_C20 svg {
+.toddler_showcase_icons__L86_C20 svg {
   cursor: pointer;
   font-size: 24px;
 }

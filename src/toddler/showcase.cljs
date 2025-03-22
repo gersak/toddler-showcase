@@ -24,6 +24,7 @@
    [toddler.showcase.popup :refer [Popup]]
    [toddler.showcase.i18n :refer [i18n]]
    [toddler.showcase.routing :refer [Routing]]
+   ; [toddler.showcase.icons :refer [Icons]]
    [toddler.showcase.icons.lazy :refer [Icons]]
    [toddler.showcase.modal :refer [Modal]]
    [toddler.showcase.notifications :refer [Notifications]]

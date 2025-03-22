@@ -69,7 +69,10 @@
      ($ ui/row
         {:align :center}
         ($ ui/row
-           {:style {:max-width width}}
+           {:className (css
+                        :border :border-normal :rounded-lg
+                        :bg-normal+)
+            :style {:max-width width}}
            ($ Chart {:config chart}))))))
 
 (defnc doc
@@ -84,11 +87,14 @@
               :style {:max-width (min width 600)}
               :className (css
                           ["& .example-field" :my-5])}
-             ($ three/Basic)
+
              ($ md/watch-url {:url "/lazy.md"})
              ($ toddler/portal
                 {:locator #(.getElementById js/document "chart-example")}
-                ($ example)))))))
+                ($ example))
+             ($ toddler/portal
+                {:locator #(.getElementById js/document "three-example")}
+                ($ three/Basic)))))))
 
 (defnc Lazy
   {:wrap [(router/wrap-rendered :toddler.lazy)
@@ -105,6 +111,6 @@
             {:id ::loading
              :name "Loading"
              :segment "loading"
-             :hash "loading"}])]}
+             :hash "lazy-loading"}])]}
   []
   ($ doc))
