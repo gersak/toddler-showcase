@@ -19,5 +19,4 @@
                                     :depends-on #{:showcase :ui :markdown}}}
                 ; :closure-defines {shadow.cljs.devtools.client.env.server_host "192.168.5.67"}
                 ; :devtools {:use-document-host false}
-                 :output-dir "dev/js"
-                 :output-to "dev/js/main.js"}}}
+                 :output-dir "dev/js"}}}
