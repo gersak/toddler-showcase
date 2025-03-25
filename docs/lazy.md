@@ -41,18 +41,27 @@ using module configurations.
                  :output-dir "dev/js"
                  :output-to "dev/js/main.js"}}}
 ```
+The configuration described above is part of the [`toddler-showcase`](https://github.com/gersak/toddler-showcase)
+repository, which generates the documentation and interactive showcase you're currently viewing.
 
-Above configuration is used in [toddler-showcase](https://github.com/gersak/toddler-showcase)
-repo, that is used to generate **this** documentation/showcase site.
+`shadow-cljs` takes your ClojureScript codebase and splits it into multiple JavaScript bundles.
+In this example, it splits the codebase into seven JS files, each corresponding to different logical
+sections of the application. These generated files—such as `main.js`, `ui.js`, and `markdown.js`—are
+output into a directory specified by the `output-dir` configuration.
 
-`shadow-cljs` will use configuration to split codebase into seven JS files and output it to `output-dir`.
-Files will be named *main.js*, *ui.js*, *markdown.js* etc.
 
-For showcase I wanted to demonstrate that other JS libraries can be used as well. `markdown-it` is used
-for rendering markdown files, `chart.js` and `three.js` are used only when you are at [Lazy JS](/toddler/lazy).
+In the showcase, external JavaScript libraries (`markdown-it`, `chart.js`, and `three.js`) are used
+to demonstrate that the Toddler framework can easily integrate other JavaScript ecosystems.
 
-That would imply that those modules should be loaded only when frontend is rendering components using
-code that is placed in those files. How?
+ - The `markdown-it` library is loaded during the initial page load and is used for 
+   rendering markdown content immediately.
+ - `chart.js` and `three.js` libraries, however, are loaded exclusively when navigating
+    to the [Lazy JS](/toddler/lazy) route, showcasing advanced graphical components.
+
+This ensures heavier libraries like `chart.js` and `three.js` are not loaded unnecessarily, keeping
+the initial load fast and efficient.
+
+
 
 
 ## Lazy loading
@@ -100,10 +109,10 @@ where k is odd keyword from provided bindings. For above example that would feel
    [toddler.lazy :as lazy]
    [toddler.md.context :as md.context]))
 
-(defnc show [props _ref] ($ toddler.lazy/show {:ref _ref & props}))
-(defnc from-url [props _ref] ($ toddler.lazy/from-url {:ref _ref & props}))
-(defnc watch-url [props _ref] ($ toddler.lazy/watch-url {:ref _ref & props}))
-(defnc img [props _ref] ($ toddler.lazy/img {:ref _ref & props}))
+(defnc show [props _ref] ($ toddler.md/show {:ref _ref & props}))
+(defnc from-url [props _ref] ($ toddler.md/from-url {:ref _ref & props}))
+(defnc watch-url [props _ref] ($ toddler.md/watch-url {:ref _ref & props}))
+(defnc img [props _ref] ($ toddler.md/img {:ref _ref & props}))
 ```
 Created lazy components have *hook* that will check if component was already loaded before
 and if it was it will use that component. If it wasn't it will call `shadow-cljs` functions
