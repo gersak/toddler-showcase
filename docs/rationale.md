@@ -134,9 +134,9 @@ Default components are packaged separately from **toddler.core**. You can find t
 ```
 
 ## Recommendation  
-If you want to customize the default components, copy the `toddler.ui.*` namespaces  
-and modify the copied code. There is nothing wrong with copy-pasting when working with UI,  
-as long as the codebase remains manageable.  
+If you want to customize the default components, copy the `toddler.ui.*` namespaces
+and modify the copied code. There is nothing wrong with copy-pasting when working with UI,
+as long as the codebase remains manageable.
 
 Hope that Toddler makes it manageable... **Good luck and Godspeed!** 🚀
 

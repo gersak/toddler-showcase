@@ -2848,7 +2848,7 @@ html[data-theme="light"] hr {
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
 }
-.toddler_showcase_modal__L127_C32 {
+.toddler_showcase_modal__L129_C32 {
   margin-top: 1rem;
 }
 .toddler_ui_elements_calendar__L13_C3 {
@@ -3946,10 +3946,12 @@ html[data-theme="light"] hr {
   border-color: var(--table-border);
   border-radius: 0.375rem;
   border-width: 1px;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   color: var(--table-text);
   display: flex;
   flex-grow: 1;
+}
+.toddler_ui_tables__L658_C3:not([flavor="flat"]) {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 .toddler_ui_tables__L658_C3 .tcell {
   overflow: hidden;
@@ -3967,15 +3969,15 @@ html[data-theme="light"] hr {
   border-bottom-width: 1px;
   border-color: var(--table-hover-border);
 }
-.toddler_ui_tables__L728_C23 {
+.toddler_ui_tables__L729_C23 {
   border-color: transparent;
   display: flex;
   padding: 0.75rem;
 }
-.toddler_ui_tables__L728_C23 .simplebar-scrollbar:before {
+.toddler_ui_tables__L729_C23 .simplebar-scrollbar:before {
   visibility: hidden;
 }
-.toddler_ui_tables__L728_C23 .trow {
+.toddler_ui_tables__L729_C23 .trow {
   align-items: flex-start;
   display: flex;
 }

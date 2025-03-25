@@ -109,8 +109,10 @@
         {:context layout/*container-dimensions*
          :value {:height height
                  :width (- width 64)}}
-        ($ ui/table {:rows showcase.table/data
-                     :columns showcase.table/columns})))))
+        ($ ui/table
+           {:flavor "flat"
+            :rows showcase.table/data
+            :columns showcase.table/columns})))))
 
 (defnc complex-dialog-example
   [{:keys [opened?]}]

@@ -91,7 +91,7 @@ are used to cache loaded component and even values are symbols (components) that
 be lazily loaded.
 
 Under the hood macro will create Helix component using `(defnc ~(symbol (name k))`
-where k is odd keyword from provided bindings. For example above that would feel like:
+where k is odd keyword from provided bindings. For above example that would feel like:
 
 ```clojure
 (ns toddler.md.lazy
