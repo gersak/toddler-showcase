@@ -179,26 +179,6 @@
              ($ feature-section
                 {:src "/images/just_enough.png"
                  :text just-enough})
-             #_(<>
-                ($ GiphyEmbed
-                   {:src screeming-kid
-                    :width 400 :height 200})
-                ($ GiphyEmbed
-                   {:src oops-kid
-                    :width 190 :height 250})
-
-                ($ GiphyEmbed
-                   {:src dj-kid
-                    :width 200 :height 200})
-                ($ GiphyEmbed
-                   {:src smooth-slide
-                    :width 200 :height 200})
-                ($ GiphyEmbed
-                   {:src kid-shocked
-                    :width 200 :height 200})
-                ($ GiphyEmbed
-                   {:src pool-fail
-                    :width 200 :height 200}))
              ($ md/watch-url {:url "/rationale.md"})
              ($ toddler/portal
                 {:locator #(.getElementById js/document "components-example")}

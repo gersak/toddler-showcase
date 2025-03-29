@@ -1,4 +1,3 @@
-
 ## UI and Love-Hate
 
 I've been coding UI for many years. Over time, it has been an emotional experience.
