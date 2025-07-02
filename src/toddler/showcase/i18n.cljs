@@ -150,7 +150,7 @@
 (defn translate-example []
   (let [translate (toddler/use-translate)
         translatef (toddler/use-translatef)
-        locale (toddler/use-current-locale)
+        locale (toddler/use-locale)
         local-currency {:en "GBP"
                         :en_US "USD"
                         :de "EUR"
@@ -196,7 +196,7 @@
       ($ translate-example)))))
 
 (defnc i18n-example []
-  (let [locale (toddler.core/use-current-locale)]
+  (let [locale (toddler.core/use-locale)]
     (d/div
      {:className (css :p-4 :mt-4 :font-semibold :bg-yellow-200 :rounded-xl :text-black)}
      (d/div

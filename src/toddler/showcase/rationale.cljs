@@ -5,7 +5,7 @@
    [helix.dom :as d]
    [shadow.css :refer [css]]
    [toddler.core :as toddler]
-   [toddler.ui :as ui :refer [!]]
+   [toddler.ui :as ui]
    [toddler.layout :as layout]
    [toddler.md.lazy :as md]
    [toddler.router :as router]
@@ -145,13 +145,13 @@
   []
   (let [{:keys [height width]} (layout/use-container-dimensions)
         {window-width :width} (toddler/use-window-dimensions)]
-    (! :simplebar {:style {:height height
-                           :width width}}
-       (! :row {:align :center}
-          (! :column {:align :center
-                      :style {:max-width (min 600 window-width)}
-                      :className (css
-                                  ["& .component" :my-6])}
+    ($ ui/simplebar {:style {:height height
+                             :width width}}
+       ($ ui/row {:align :center}
+          ($ ui/column {:align :center
+                        :style {:max-width (min 600 window-width)}
+                        :className (css
+                                    ["& .component" :my-6])}
              (d/div
               {:className (css :flex
                                :my-4
